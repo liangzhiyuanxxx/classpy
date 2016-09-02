@@ -21,15 +21,10 @@ public class Table extends ClassComponent {
     
     @Override
     protected void readContent(ClassReader reader) {
-        readTable(reader);
-        setEntryName();
-    }
-    
-    private void readTable(ClassReader reader) {
         try {
             for (int i = 0; i < length.getValue(); i++) {
-                ClassComponent entry = readEntry(reader);
-                super.addSubComponent(entry);
+                ClassComponent c = readEntry(reader);
+                super.addSubComponent(c);
             }
         } catch (ReflectiveOperationException e) {
             throw new ClassParseException(e);
@@ -40,9 +35,9 @@ public class Table extends ClassComponent {
         if (entryClass == AttributeInfo.class) {
             return readAttributeInfo(reader);
         } else {
-            ClassComponent entry = entryClass.newInstance();
-            entry.read(reader);
-            return entry;
+            ClassComponent c = entryClass.newInstance();
+            c.read(reader);
+            return c;
         }
     }
     
@@ -55,16 +50,19 @@ public class Table extends ClassComponent {
         
         return attr;
     }
-    
-    private void setEntryName() {
-//        for (int i = 0; i < table.length; i++) {
-//            String newName = StringUtil.formatIndex(length, i);
-//            String oldName = table[i].getName();
-//            if (oldName != null) {
-//                newName += " (" + oldName + ")";
-//            }
-//            table[i].setName(newName);
-//        }
+
+    @Override
+    protected void afterRead(ClassReader reader) {
+        for (int i = 0; i < length.getValue(); i++) {
+            ClassComponent entry = super.getSubComponent(i);
+
+            String newName = StringUtil.formatIndex(length.getValue(), i);
+            String oldName = entry.getName();
+            if (oldName != null) {
+                newName += " (" + oldName + ")";
+            }
+            entry.setName(newName);
+        }
     }
 
 }
