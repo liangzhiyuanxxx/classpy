@@ -1,5 +1,6 @@
 package com.github.zxh.classpy.classfile;
 
+import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.testclasses.AnnotatedClass;
 import com.github.zxh.classpy.classfile.testclasses.SimpleAttr;
 import com.github.zxh.classpy.classfile.testclasses.ByteCode;
@@ -21,13 +22,13 @@ public class ClassFileTest {
     @Test
     public void simpleClass() throws Exception {
         ClassFile cf = loadClass(SimpleClass.class);
-        assertEquals(0, cf.getMinorVersion().getValue());
-        assertEquals(52, cf.getMajorVersion().getValue());
-        assertEquals(37, cf.getConstantPoolCount().getValue());
-        assertEquals(2, cf.getInterfacesCount().getValue());
-        assertEquals(2, cf.getFieldsCount().getValue());
-        assertEquals(5, cf.getMethodsCount().getValue());
-        assertEquals(2, cf.getAttributesCount().getValue());
+        assertEquals(0, ((U2) cf.getSubComponent(1)).getValue());
+        assertEquals(52, ((U2) cf.getSubComponent(2)).getValue());
+        assertEquals(37, ((U2) cf.getSubComponent(3)).getValue());
+        assertEquals(2, ((U2) cf.getSubComponent(8)).getValue());
+        assertEquals(2, ((U2) cf.getSubComponent(10)).getValue());
+        assertEquals(5, ((U2) cf.getSubComponent(12)).getValue());
+        assertEquals(2, ((U2) cf.getSubComponent(14)).getValue());
     }
     
     @Test
