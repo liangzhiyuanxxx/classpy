@@ -1,7 +1,6 @@
 package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
-import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 import com.github.zxh.classpy.classfile.datatype.U4;
@@ -27,18 +26,14 @@ Code_attribute {
 public class CodeAttribute extends AttributeInfo {
 
     {
-        U4 codeLength = new U4();
-        U2 exceptionTableLength = new U2();
-        U2 attributesCount = new U2();
-
         super.addSubComponent("maxStack", new U2());
         super.addSubComponent("maxLocals", new U2());
-        super.addSubComponent("codeLength", codeLength);
+        U4 codeLength = super.addU4("codeLength");
         super.addSubComponent("code", new Code(codeLength));
-        super.addSubComponent("exceptionTableLength", exceptionTableLength);
-        super.addSubComponent("exceptionTable", new Table<>(ExceptionTableEntry.class, exceptionTableLength));
-        super.addSubComponent("attributesCount", attributesCount);
-        super.addSubComponent("attributes", new Table<>(AttributeInfo.class, attributesCount));
+        U2 exceptionTableLength = super.addU2("exceptionTableLength");
+        super.addTable("exceptionTable", exceptionTableLength, ExceptionTableEntry.class);
+        U2 attributesCount = super.addU2("attributesCount");
+        super.addTable("attributes", attributesCount, AttributeInfo.class);
     }
 
 

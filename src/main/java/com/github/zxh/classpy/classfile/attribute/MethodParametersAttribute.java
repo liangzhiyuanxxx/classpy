@@ -1,7 +1,6 @@
 package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
-import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U1;
 
 /*
@@ -18,7 +17,7 @@ public class MethodParametersAttribute extends AttributeInfo {
 
     {
         U1 n = super.addU1("parametersCount");
-        super.addSubComponent("parameters", new Table<>(ParameterInfo.class, n));
+        super.addTable("parameters", n, ParameterInfo.class);
     }
 
     

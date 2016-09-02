@@ -1,8 +1,8 @@
 package com.github.zxh.classpy.classfile;
 
-import com.github.zxh.classpy.classfile.datatype.U1;
-import com.github.zxh.classpy.classfile.datatype.U2;
+import com.github.zxh.classpy.classfile.datatype.*;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
+import javafx.scene.control.Tab;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -51,6 +51,18 @@ public abstract class ClassComponent {
         U2 u2 = new U2();
         this.addSubComponent(name, u2);
         return u2;
+    }
+
+    protected U4 addU4(String name) {
+        U4 u4 = new U4();
+        this.addSubComponent(name, u4);
+        return u4;
+    }
+
+    protected void addTable(String name, UInt length,
+                            Class<? extends ClassComponent> entryClass) {
+        Table table = new Table(entryClass, length);
+        this.addSubComponent(name, table);
     }
 
     protected void addSubComponent(String name, ClassComponent c) {

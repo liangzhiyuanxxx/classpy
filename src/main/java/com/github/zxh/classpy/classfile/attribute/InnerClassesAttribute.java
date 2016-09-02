@@ -3,7 +3,6 @@ package com.github.zxh.classpy.classfile.attribute;
 import com.github.zxh.classpy.classfile.AccessFlags;
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
-import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 
@@ -22,10 +21,8 @@ InnerClasses_attribute {
 public class InnerClassesAttribute extends AttributeInfo {
 
     {
-        U2 numberOfClasses = new U2();
-
-        super.addSubComponent("numberOfClasses", numberOfClasses);
-        super.addSubComponent("classes", new Table<>(InnerClassInfo.class, numberOfClasses));
+        U2 n = super.addU2("numberOfClasses");
+        super.addTable("classes", n, InnerClassInfo.class);
     }
     
     

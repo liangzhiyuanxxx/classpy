@@ -15,8 +15,8 @@ attribute_info {
 public abstract class AttributeInfo extends ClassComponent {
 
     {
-        super.addSubComponent("attributeNameIndex", new U2());
-        super.addSubComponent("attributeLength", new U4());
+        super.addU2("attributeNameIndex");
+        super.addU4("attributeLength");
     }
 
     @Override

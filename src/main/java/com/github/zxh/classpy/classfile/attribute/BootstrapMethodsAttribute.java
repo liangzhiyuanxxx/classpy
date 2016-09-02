@@ -1,7 +1,6 @@
 package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
-import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 
@@ -19,23 +18,17 @@ BootstrapMethods_attribute {
 public class BootstrapMethodsAttribute extends AttributeInfo {
 
     {
-        U2 numBootstrapMethods = new U2();
-
-        super.addSubComponent("numBootstrapMethods", numBootstrapMethods);
-        super.addSubComponent("bootstrapMethods",
-                new Table<>(BootstrapMethodInfo.class, numBootstrapMethods));
+        U2 n = super.addU2("numBootstrapMethods");
+        super.addTable("bootstrapMethods", n, BootstrapMethodInfo.class);
     }
 
     
     public static class BootstrapMethodInfo extends ClassComponent {
 
         {
-            U2 numBootstrapArguments = new U2();
-
             super.addSubComponent("bootstrapMethodRef", new U2CpIndex());
-            super.addSubComponent("numBootstrapArguments", numBootstrapArguments);
-            super.addSubComponent("bootstrapArguments",
-                    new Table<>(U2CpIndex.class, numBootstrapArguments));
+            U2 n = super.addU2("numBootstrapArguments");
+            super.addTable("bootstrapArguments", n, U2CpIndex.class);
         }
         
     }

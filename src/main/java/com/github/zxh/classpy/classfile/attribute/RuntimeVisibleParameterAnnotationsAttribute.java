@@ -1,7 +1,6 @@
 package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
-import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U1;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.attribute.RuntimeVisibleAnnotationsAttribute.AnnotationInfo;
@@ -20,7 +19,7 @@ public class RuntimeVisibleParameterAnnotationsAttribute extends AttributeInfo {
 
     {
         U1 n = super.addU1("numParameters");
-        super.addSubComponent("parameterAnnotations", new Table<>(ParameterAnnotationInfo.class, n));
+        super.addTable("parameterAnnotations", n, ParameterAnnotationInfo.class);
     }
     
     
@@ -28,7 +27,7 @@ public class RuntimeVisibleParameterAnnotationsAttribute extends AttributeInfo {
 
         {
             U2 n = super.addU2("numAnnotations");
-            super.addSubComponent("annotations", new Table<>(AnnotationInfo.class, n));
+            super.addTable("annotations", n, AnnotationInfo.class);
         }
         
     }

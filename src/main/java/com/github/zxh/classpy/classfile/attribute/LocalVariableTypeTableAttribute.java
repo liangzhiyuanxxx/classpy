@@ -2,7 +2,6 @@ package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
-import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 
@@ -23,7 +22,7 @@ public class LocalVariableTypeTableAttribute extends AttributeInfo {
 
     {
         U2 n = super.addU2("localVariableTypeTableLength");
-        super.addSubComponent("localVariableTypeTable", new Table<>(LocalVariableTypeTableEntry.class, n));
+        super.addTable("localVariableTypeTable", n, LocalVariableTypeTableEntry.class);
     }
 
 

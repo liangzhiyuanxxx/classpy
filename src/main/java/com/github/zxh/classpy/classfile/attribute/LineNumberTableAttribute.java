@@ -2,7 +2,6 @@ package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
-import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U2;
 
 /*
@@ -18,10 +17,8 @@ LineNumberTable_attribute {
 public class LineNumberTableAttribute extends AttributeInfo {
 
     {
-        U2 lineNumberTableLength = new U2();
-
-        super.addSubComponent("lineNumberTableLength", lineNumberTableLength);
-        super.addSubComponent("lineNumberTable", new Table<>(LineNumberTableEntry.class, lineNumberTableLength));
+        U2 n = super.addU2("lineNumberTableLength");
+        super.addTable("lineNumberTable", n, LineNumberTableEntry.class);
     }
 
     @Override

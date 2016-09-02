@@ -1,6 +1,5 @@
 package com.github.zxh.classpy.classfile.attribute;
 
-import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 
@@ -15,10 +14,8 @@ Exceptions_attribute {
 public class ExceptionsAttribute extends AttributeInfo {
 
     {
-        U2 numberOfExceptions = new U2();
-
-        super.addSubComponent("numberOfExceptions", numberOfExceptions);
-        super.addSubComponent("exceptionIndexTable", new Table<>(U2CpIndex.class, numberOfExceptions));
+        U2 n = super.addU2("numberOfExceptions");
+        super.addTable("exceptionIndexTable", n, U2CpIndex.class);
     }
     
 }
