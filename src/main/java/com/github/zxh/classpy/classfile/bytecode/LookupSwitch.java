@@ -77,7 +77,7 @@ public class LookupSwitch extends Instruction {
             }
             
             offset = reader.readInt();
-            setDesc(basePc + offset);
+            setDesc(Integer.toString(basePc + offset));
         }
         
     }

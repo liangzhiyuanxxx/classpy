@@ -27,7 +27,7 @@ public class LineNumberTableAttribute extends AttributeInfo {
                 lineNumberTableLength);
         lineNumberTable.getSubComponents().forEach(entry -> {
             entry.setName("line " + entry.lineNumber.getValue());
-            entry.setDesc(entry.startPc.getValue());
+            entry.setDesc(Integer.toString(entry.startPc.getValue()));
         });
     }
     

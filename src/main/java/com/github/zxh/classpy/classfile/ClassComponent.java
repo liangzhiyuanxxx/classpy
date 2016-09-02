@@ -23,10 +23,6 @@ public abstract class ClassComponent {
     public final int getOffset() {return offset;}
     public final int getLength() {return length;}
 
-    public final void setDesc(int value) {
-        desc = Integer.toString(value);
-    }
-
     /**
      * Returns sub-components.
      * 

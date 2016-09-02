@@ -19,7 +19,7 @@ public abstract class UInt extends ClassComponent implements IntValue {
     }
     
     protected void describe(int value, ClassReader reader) {
-        setDesc(value);
+        setDesc(Integer.toString(value));
     }
     
     protected abstract int readUInt(ClassReader reader);
