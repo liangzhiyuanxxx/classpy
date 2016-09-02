@@ -41,15 +41,7 @@ public abstract class ClassComponent {
     public final void setDesc(double value) {
         desc = Double.toString(value);
     }
-    
-    protected final void startRead(int position) {
-        offset = position;
-    }
-    
-    protected final void endRead(int position) {
-        length = position - offset;
-    }
-    
+
     /**
      * Returns sub-components.
      * 
@@ -91,9 +83,9 @@ public abstract class ClassComponent {
      * @param reader 
      */
     public final void read(ClassReader reader) {
-        startRead(reader.getPosition());
+        offset = reader.getPosition();
         readContent(reader);
-        endRead(reader.getPosition());
+        length = reader.getPosition() - offset;
     }
     
     /**
