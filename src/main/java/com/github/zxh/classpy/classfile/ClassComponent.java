@@ -31,6 +31,10 @@ public abstract class ClassComponent {
                 : subComponents;
     }
 
+    protected ClassComponent getSubComponent(int index) {
+        return subComponents.get(index);
+    }
+
     protected void addSubComponent(ClassComponent c) {
         this.addSubComponent(null, c);
     }

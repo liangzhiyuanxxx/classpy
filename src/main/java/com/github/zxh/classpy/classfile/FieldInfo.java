@@ -2,7 +2,6 @@ package com.github.zxh.classpy.classfile;
 
 import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.datatype.Table;
-import com.github.zxh.classpy.classfile.attribute.AttributeContainer;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 import com.github.zxh.classpy.classfile.attribute.AttributeInfo;
@@ -16,31 +15,29 @@ field_info {
     attribute_info attributes[attributes_count];
 }
  */
-public class FieldInfo extends ClassComponent implements AttributeContainer {
+public class FieldInfo extends ClassComponent {
 
-    private U2 accessFlags;
-    private U2CpIndex nameIndex;
-    private U2CpIndex descriptorIndex;
-    private U2 attributesCount;
-    private Table<AttributeInfo> attributes;
-
-    @Override
-    public Table<AttributeInfo> getAttributes() {
-        return attributes;
+    {
+        U2 attributesCount = new U2();
+        
+        super.addSubComponent("accessFlags", new U2());
+        super.addSubComponent("nameIndex", new U2CpIndex());
+        super.addSubComponent("descriptorIndex", new U2CpIndex());
+        super.addSubComponent("attributesCount", attributesCount);
+        super.addSubComponent("attributes", new Table<>(AttributeInfo.class, attributesCount));
     }
 
     @Override
     protected void readContent(ClassReader reader) {
-        accessFlags = reader.readU2();
-        nameIndex = reader.readU2CpIndex();
-        descriptorIndex = reader.readU2CpIndex();
-        attributesCount = reader.readU2();
-        attributes = reader.readTable(AttributeInfo.class, attributesCount);
-        if (nameIndex.getValue() > 0) {
+        super.readContent(reader);
+
+        int nameIndex = ((U2CpIndex) super.getSubComponent(1)).getValue();
+        if (nameIndex > 0) {
             // todo fix loading java.lang.String from rt.jar
             setDesc(reader.getConstantPool().getUtf8String(nameIndex));
         }
-        describe(accessFlags);
+
+        describe((U2) super.getSubComponent(0));
     }
     
     protected void describe(U2 accessFlags) {
