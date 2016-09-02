@@ -1,5 +1,7 @@
 package com.github.zxh.classpy.classfile;
 
+import com.github.zxh.classpy.classfile.datatype.U1;
+import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
 
 import java.util.ArrayList;
@@ -37,6 +39,18 @@ public abstract class ClassComponent {
 
     protected void addSubComponent(ClassComponent c) {
         this.addSubComponent(null, c);
+    }
+
+    protected U1 addU1(String name) {
+        U1 u1 = new U1();
+        this.addSubComponent(name, u1);
+        return u1;
+    }
+
+    protected U2 addU2(String name) {
+        U2 u2 = new U2();
+        this.addSubComponent(name, u2);
+        return u2;
     }
 
     protected void addSubComponent(String name, ClassComponent c) {

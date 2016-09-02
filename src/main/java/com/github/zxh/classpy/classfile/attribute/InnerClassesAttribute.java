@@ -21,30 +21,26 @@ InnerClasses_attribute {
  */
 public class InnerClassesAttribute extends AttributeInfo {
 
-    private U2 numberOfClasses;
-    private Table<InnerClassInfo> classes;
-    
-    @Override
-    protected void readInfo(ClassReader reader) {
-        numberOfClasses = reader.readU2();
-        classes = reader.readTable(InnerClassInfo.class, numberOfClasses);
+    {
+        U2 numberOfClasses = new U2();
+
+        super.addSubComponent("numberOfClasses", numberOfClasses);
+        super.addSubComponent("classes", new Table<>(InnerClassInfo.class, numberOfClasses));
     }
     
     
     public static class InnerClassInfo extends ClassComponent {
-        
-        private U2CpIndex innerClassInfoIndex;
-        private U2CpIndex outerClassInfoIndex;
-        private U2CpIndex innerNameIndex;
-        private U2 innerClassAccessFlags;
+
+        {
+            super.addSubComponent("innerClassInfoIndex", new U2CpIndex());
+            super.addSubComponent("outerClassInfoIndex", new U2CpIndex());
+            super.addSubComponent("innerNameIndex", new U2CpIndex());
+            super.addSubComponent("innerClassAccessFlags", new U2());
+        }
 
         @Override
-        protected void readContent(ClassReader reader) {
-            innerClassInfoIndex = reader.readU2CpIndex();
-            outerClassInfoIndex = reader.readU2CpIndex();
-            innerNameIndex = reader.readU2CpIndex();
-            innerClassAccessFlags = reader.readU2();
-            AccessFlags.describeInnerClassFlags(innerClassAccessFlags);
+        protected void afterRead(ClassReader reader) {
+            AccessFlags.describeInnerClassFlags((U2) super.getSubComponent(3));
         }
         
     }

@@ -1,10 +1,8 @@
 package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
-import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U1;
-import com.github.zxh.classpy.classfile.datatype.U2;
 
 /*
 MethodParameters_attribute {
@@ -18,25 +16,17 @@ MethodParameters_attribute {
  */
 public class MethodParametersAttribute extends AttributeInfo {
 
-    private U1 parametersCount;
-    private Table<ParameterInfo> parameters;
-    
-    @Override
-    protected void readInfo(ClassReader reader) {
-        parametersCount = reader.readU1();
-        parameters = reader.readTable(ParameterInfo.class, parametersCount);
+    {
+        U1 n = super.addU1("parametersCount");
+        super.addSubComponent("parameters", new Table<>(ParameterInfo.class, n));
     }
-    
+
     
     public static class ParameterInfo extends ClassComponent {
 
-        private U2 nameIndex;
-        private U2 accessFlags;
-        
-        @Override
-        protected void readContent(ClassReader reader) {
-            nameIndex = reader.readU2();
-            accessFlags = reader.readU2();
+        {
+            super.addU2("nameIndex");
+            super.addU2("accessFlags");
         }
         
     }

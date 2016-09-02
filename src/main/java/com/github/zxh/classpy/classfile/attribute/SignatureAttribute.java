@@ -1,6 +1,5 @@
 package com.github.zxh.classpy.classfile.attribute;
 
-import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 
 /*
@@ -12,11 +11,8 @@ Signature_attribute {
  */
 public class SignatureAttribute extends AttributeInfo {
 
-    private U2CpIndex signatureIndex;
-    
-    @Override
-    protected void readInfo(ClassReader reader) {
-        signatureIndex = reader.readU2CpIndex();
+    {
+        super.addSubComponent("signatureIndex", new U2CpIndex());
     }
     
 }

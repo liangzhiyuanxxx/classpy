@@ -21,33 +21,25 @@ LocalVariableTypeTable_attribute {
  */
 public class LocalVariableTypeTableAttribute extends AttributeInfo {
 
-    private U2 localVariableTypeTableLength;
-    private Table<LocalVariableTypeTableEntry> localVariableTypeTable;
-    
-    @Override
-    protected void readInfo(ClassReader reader) {
-        localVariableTypeTableLength = reader.readU2();
-        localVariableTypeTable = reader.readTable(LocalVariableTypeTableEntry.class,
-                localVariableTypeTableLength);
+    {
+        U2 n = super.addU2("localVariableTypeTableLength");
+        super.addSubComponent("localVariableTypeTable", new Table<>(LocalVariableTypeTableEntry.class, n));
     }
-    
-    
+
+
     public static class LocalVariableTypeTableEntry extends ClassComponent {
-        
-        private U2 startPc;
-        private U2 length;
-        private U2CpIndex nameIndex;
-        private U2CpIndex signatureIndex;
-        private U2 index;
+
+        {
+            super.addU2("startPc");
+            super.addU2("length");
+            super.addSubComponent("nameIndex", new U2CpIndex());
+            super.addSubComponent("signatureIndex", new U2CpIndex());
+            super.addU2("index");
+        }
 
         @Override
-        protected void readContent(ClassReader reader) {
-            startPc = reader.readU2();
-            length = reader.readU2();
-            nameIndex = reader.readU2CpIndex();
-            signatureIndex = reader.readU2CpIndex();
-            index = reader.readU2();
-            setDesc(reader.getConstantPool().getUtf8String(nameIndex));
+        protected void afterRead(ClassReader reader) {
+            //setDesc(reader.getConstantPool().getUtf8String(nameIndex));
         }
     
     }

@@ -14,9 +14,9 @@ import com.github.zxh.classpy.classfile.attribute.AttributeInfo;
 public class Table<E extends ClassComponent> extends ClassComponent {
 
     private final Class<E> classOfE;
-    private final U2 length;
+    private final UInt length;
 
-    public Table(Class<E> classOfE, U2 length) {
+    public Table(Class<E> classOfE, UInt length) {
         this.classOfE = classOfE;
         this.length = length;
     }

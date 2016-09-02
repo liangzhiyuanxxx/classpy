@@ -1,6 +1,5 @@
 package com.github.zxh.classpy.classfile.attribute;
 
-import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 
 /*
@@ -12,11 +11,8 @@ ConstantValue_attribute {
  */
 public class ConstantValueAttribute extends AttributeInfo {
 
-    private U2CpIndex constantValueIndex;
-    
-    @Override
-    protected void readInfo(ClassReader reader) {
-        constantValueIndex = reader.readU2CpIndex();
+    {
+        super.addSubComponent("constantValueIndex", new U2CpIndex());
     }
     
 }

@@ -21,51 +21,32 @@ LocalVariableTable_attribute {
  */
 public class LocalVariableTableAttribute extends AttributeInfo {
 
-    private U2 localVariableTableLength;
-    private Table<LocalVariableTableEntry> localVariableTable;
+    {
+        U2 n = super.addU2("localVariableTableLength");
+        super.addSubComponent("localVariableTable", new Table<>(LocalVariableTableEntry.class, n));
+    }
 
-    public Table<LocalVariableTableEntry> getLocalVariableTable() {
-        return localVariableTable;
-    }
-    
-    @Override
-    protected void readInfo(ClassReader reader) {
-        localVariableTableLength = reader.readU2();
-        localVariableTable = reader.readTable(LocalVariableTableEntry.class,
-                localVariableTableLength);
-    }
-    
     
     public static class LocalVariableTableEntry extends ClassComponent {
-        
-        private U2 startPc;
-        private U2 length;
-        private U2CpIndex nameIndex;
-        private U2CpIndex descriptorIndex;
-        private U2 index;
 
-        // Getters
-        public U2 getStartPc() {return startPc;}
-        public U2 getIndex() {return index;}
-        
-        // can not override getLength()
-        public U2 length() {return length;}
+        {
+            super.addU2("startPc");
+            super.addU2("length");
+            super.addSubComponent("nameIndex", new U2CpIndex());
+            super.addSubComponent("descriptorIndex", new U2CpIndex());
+            super.addU2("index");
+        }
 
         @Override
-        protected void readContent(ClassReader reader) {
-            startPc = reader.readU2();
-            length = reader.readU2();
-            nameIndex = reader.readU2CpIndex();
-            descriptorIndex = reader.readU2CpIndex();
-            index = reader.readU2();
+        protected void afterRead(ClassReader reader) {
             setDesc(reader);
         }
         
         private void setDesc(ClassReader reader) {
-            String varName = reader.getConstantPool().getConstantDesc(nameIndex.getValue());
-            int fromPc = startPc.getValue();
-            int toPc = fromPc + length.getValue() - 1;
-            setDesc(String.format("%s(%d~%d)", varName, fromPc, toPc));
+//            String varName = reader.getConstantPool().getConstantDesc(nameIndex.getValue());
+//            int fromPc = startPc.getValue();
+//            int toPc = fromPc + length.getValue() - 1;
+//            setDesc(String.format("%s(%d~%d)", varName, fromPc, toPc));
         }
         
     }
