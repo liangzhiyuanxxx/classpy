@@ -5,9 +5,6 @@ import com.github.zxh.classpy.classfile.ClassParseException;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.helper.StringUtil;
 import com.github.zxh.classpy.classfile.attribute.AttributeInfo;
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Array of class components.
@@ -18,7 +15,6 @@ public class Table<E extends ClassComponent> extends ClassComponent {
 
     private final Class<E> classOfE;
     private final int length;
-    private E[] table;
 
     public Table(Class<E> classOfE, int n) {
         this.classOfE = classOfE;
@@ -32,13 +28,10 @@ public class Table<E extends ClassComponent> extends ClassComponent {
     }
     
     private void readTable(ClassReader reader) {
-        @SuppressWarnings("unchecked")
-        E[] arr = (E[]) Array.newInstance(classOfE, length);
-        table = arr;
-        
         try {
             for (int i = 0; i < length; i++) {
-                table[i] = readEntry(reader);
+                ClassComponent entry = readEntry(reader);
+                super.addSubComponent(entry);
             }
         } catch (ReflectiveOperationException e) {
             throw new ClassParseException(e);
@@ -68,19 +61,14 @@ public class Table<E extends ClassComponent> extends ClassComponent {
     }
     
     private void setEntryName() {
-        for (int i = 0; i < table.length; i++) {
-            String newName = StringUtil.formatIndex(length, i);
-            String oldName = table[i].getName();
-            if (oldName != null) {
-                newName += " (" + oldName + ")";
-            }
-            table[i].setName(newName);
-        }
+//        for (int i = 0; i < table.length; i++) {
+//            String newName = StringUtil.formatIndex(length, i);
+//            String oldName = table[i].getName();
+//            if (oldName != null) {
+//                newName += " (" + oldName + ")";
+//            }
+//            table[i].setName(newName);
+//        }
     }
-    
-    @Override
-    public List<E> getSubComponents() {
-        return Arrays.asList(table);
-    }
-    
+
 }

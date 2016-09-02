@@ -30,7 +30,11 @@ public abstract class ClassComponent {
                 ? Collections.EMPTY_LIST
                 : subComponents;
     }
-    
+
+    protected void addSubComponent(ClassComponent c) {
+        subComponents.add(c);
+    }
+
     /**
      * The returned string will be displayed by FileComponentTreeItem.
      * 
