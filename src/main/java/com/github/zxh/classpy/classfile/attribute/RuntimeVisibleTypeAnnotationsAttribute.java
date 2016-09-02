@@ -19,13 +19,9 @@ RuntimeVisibleTypeAnnotations_attribute {
  */
 public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
 
-    private U2 numAnnotations;
-    private Table<TypeAnnotationInfo> annotations;
-    
-    @Override
-    protected void readInfo(ClassReader reader) {
-        numAnnotations = reader.readU2();
-        annotations = reader.readTable(TypeAnnotationInfo.class, numAnnotations);
+    {
+        U2 n = super.addU2("numAnnotations");
+        super.addTable("annotations", n, TypeAnnotationInfo.class);
     }
     
     
@@ -206,13 +202,9 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
     */
     public static class TypePath extends ClassComponent {
 
-        private U1 pathLength;
-        private Table<PathInfo> path;
-        
-        @Override
-        protected void readContent(ClassReader reader) {
-            pathLength = reader.readU1();
-            path = reader.readTable(PathInfo.class, pathLength);
+        {
+            U1 n = super.addU1("pathLength");
+            super.addTable("path", n, PathInfo.class);
         }
         
     }

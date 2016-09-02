@@ -2,8 +2,6 @@ package com.github.zxh.classpy.classfile.reader;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.ClassParseException;
-import com.github.zxh.classpy.classfile.datatype.IntValue;
-import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U1;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U4;
@@ -67,17 +65,5 @@ public class ClassReader extends BytesReader {
     public U4Hex readU4Hex() {
         return readCC(U4Hex::new);
     }
-    
-    public ConstantPool readConstantPool(int cpCount) {
-        constantPool = new ConstantPool(cpCount);
-        constantPool.read(this);
-        return constantPool;
-    }
-    
-    public <T extends ClassComponent> Table<T> readTable(Class<T> classOfT, IntValue length) {
-        Table<T> table = new Table<>(classOfT, length.getValue());
-        table.read(this);
-        return table;
-    }
-    
+
 }

@@ -3,7 +3,6 @@ package com.github.zxh.classpy.classfile.attribute;
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.ClassParseException;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
-import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U1;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
@@ -18,13 +17,9 @@ RuntimeVisibleAnnotations_attribute {
  */
 public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
 
-    private U2 numAnnotations;
-    private Table<AnnotationInfo> annotations;
-    
-    @Override
-    protected void readInfo(ClassReader reader) {
-        numAnnotations = reader.readU2();
-        annotations = reader.readTable(AnnotationInfo.class, numAnnotations);
+    {
+        U2 n = super.addU2("numAnnotations");
+        super.addTable("annotations", n, AnnotationInfo.class);
     }
     
     /*
@@ -37,18 +32,17 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
     }
     */
     public static class AnnotationInfo extends ClassComponent {
-        
-        private U2CpIndex typeIndex;
-        private U2 numElementValuePairs;
-        private Table<ElementValuePair> elementValuePairs;
+
+        {
+            super.addSubComponent("typeIndex", new U2CpIndex());
+            U2 n = super.addU2("numElementValuePairs");
+            super.addTable("elementValuePairs", n, ElementValuePair.class);
+        }
+
         
         @Override
-        protected void readContent(ClassReader reader) {
-            typeIndex = reader.readU2CpIndex();
-            numElementValuePairs = reader.readU2();
-            elementValuePairs = reader.readTable(ElementValuePair.class,
-                    numElementValuePairs);
-            setDesc(reader.getConstantPool().getUtf8String(typeIndex));
+        protected void afterRead(ClassReader reader) {
+            //setDesc(reader.getConstantPool().getUtf8String(typeIndex));
         }
         
     }
@@ -158,14 +152,10 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
     }
     
     public static class ArrayValue extends  ClassComponent {
-        
-        private U2 numValues;
-        private Table<ElementValue> values;
-        
-        @Override
-        protected void readContent(ClassReader reader) {
-            numValues = reader.readU2();
-            values = reader.readTable(ElementValue.class, numValues);
+
+        {
+            U2 n = super.addU2("numValues");
+            super.addTable("values", n, ElementValue.class);
         }
         
     }
