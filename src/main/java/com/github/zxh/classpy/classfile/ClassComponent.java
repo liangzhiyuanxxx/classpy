@@ -2,7 +2,6 @@ package com.github.zxh.classpy.classfile;
 
 import com.github.zxh.classpy.classfile.datatype.*;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
-import javafx.scene.control.Tab;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -76,26 +75,6 @@ public abstract class ClassComponent {
     }
 
     /**
-     * The returned string will be displayed by FileComponentTreeItem.
-     * 
-     * @return 
-     */
-    @Override
-    public final String toString() {
-        if (name != null && desc != null) {
-            return name + ": " + desc;
-        }
-        if (name != null) {
-            return name;
-        }
-        if (desc != null) {
-            return desc;
-        }
-        
-        return getClass().getSimpleName();
-    }
-    
-    /**
      * Reads content, records offset and length.
      * @param reader 
      */
@@ -118,6 +97,26 @@ public abstract class ClassComponent {
 
     protected void afterRead(ClassReader reader) {
 
+    }
+
+    /**
+     * The returned string will be displayed by FileComponentTreeItem.
+     *
+     * @return
+     */
+    @Override
+    public final String toString() {
+        if (name != null && desc != null) {
+            return name + ": " + desc;
+        }
+        if (name != null) {
+            return name;
+        }
+        if (desc != null) {
+            return desc;
+        }
+
+        return getClass().getSimpleName();
     }
 
 }

@@ -46,6 +46,7 @@ public class Table extends ClassComponent {
         String attrName = reader.getConstantPool().getUtf8String(attrNameIndex);
         
         AttributeInfo attr = AttributeInfo.create(attrName);
+        attr.setName(attrName);
         attr.read(reader);
         
         return attr;

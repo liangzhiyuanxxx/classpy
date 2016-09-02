@@ -23,12 +23,6 @@ public abstract class AttributeInfo extends ClassComponent {
         return ((U4) super.getSubComponent(1)).getValue();
     }
 
-    @Override
-    protected void afterRead(ClassReader reader) {
-        int attNameIndex = ((U2) super.getSubComponent(0)).getValue();
-        setName(reader.getConstantPool().getUtf8String(attNameIndex));
-    }
-    
     
     /**
      * Create concrete XxxAttribute by name.
