@@ -12,9 +12,10 @@ SourceDebugExtension_attribute {
 public class SourceDebugExtensionAttribute extends AttributeInfo {
 
     @Override
-    protected void readInfo(ClassReader reader) {
+    protected void readContent(ClassReader reader) {
+        super.readContent(reader);
         // todo
-        reader.skipBytes(attributeLength.getValue());
+        reader.skipBytes(super.getAttributeLength());
     }
     
 }

@@ -19,6 +19,10 @@ public abstract class AttributeInfo extends ClassComponent {
         super.addU4("attributeLength");
     }
 
+    protected int getAttributeLength() {
+        return ((U4) super.getSubComponent(1)).getValue();
+    }
+
     @Override
     protected void afterRead(ClassReader reader) {
         int attNameIndex = ((U2) super.getSubComponent(0)).getValue();
