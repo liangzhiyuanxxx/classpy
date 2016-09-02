@@ -1,7 +1,6 @@
 package com.github.zxh.classpy.classfile;
 
 import com.github.zxh.classpy.classfile.reader.ClassReader;
-import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 import com.github.zxh.classpy.classfile.attribute.AttributeInfo;
@@ -18,13 +17,11 @@ field_info {
 public class FieldInfo extends ClassComponent {
 
     {
-        U2 attributesCount = new U2();
-        
         super.addSubComponent("accessFlags", new U2());
         super.addSubComponent("nameIndex", new U2CpIndex());
         super.addSubComponent("descriptorIndex", new U2CpIndex());
-        super.addSubComponent("attributesCount", attributesCount);
-        super.addSubComponent("attributes", new Table<>(AttributeInfo.class, attributesCount));
+        U2 attributesCount = super.addU2("attributesCount");
+        super.addTable("attributes", attributesCount, AttributeInfo.class);
     }
 
     @Override

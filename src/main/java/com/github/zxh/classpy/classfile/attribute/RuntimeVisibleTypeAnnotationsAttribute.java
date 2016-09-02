@@ -3,7 +3,6 @@ package com.github.zxh.classpy.classfile.attribute;
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.ClassParseException;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
-import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U1;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.attribute.RuntimeVisibleAnnotationsAttribute.AnnotationInfo;
@@ -109,16 +108,16 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
     public static class TargetInfo extends ClassComponent {
 
         private final int targetType;
-        private U1 typeParameterIndex; // type_parameter_target & type_parameter_bound_target
-        private U2 supertypeIndex; // supertype_target
-        private U1 boundIndex; // type_parameter_bound_target
-        private U1 formalParameterIndex; // formal_parameter_target
-        private U2 throwsTypeIndex; // throws_target
-        private U2 tableLength; // localvar_target
-        private Table<LocalVarInfo> table; // localvar_target
-        private U2 exceptionTableIndex; // catch_target
-        private U2 offset; // offset_target & type_argument_target
-        private U1 typeArgumentIndex; // type_argument_target
+//        private U1 typeParameterIndex; // type_parameter_target & type_parameter_bound_target
+//        private U2 supertypeIndex; // supertype_target
+//        private U1 boundIndex; // type_parameter_bound_target
+//        private U1 formalParameterIndex; // formal_parameter_target
+//        private U2 throwsTypeIndex; // throws_target
+//        private U2 tableLength; // localvar_target
+//        private Table<LocalVarInfo> table; // localvar_target
+//        private U2 exceptionTableIndex; // catch_target
+//        private U2 offset; // offset_target & type_argument_target
+//        private U1 typeArgumentIndex; // type_argument_target
 
         public TargetInfo(int targetType) {
             this.targetType = targetType;
@@ -129,50 +128,51 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
             switch (targetType) {
                 case 0x00:
                 case 0x01:
-                    typeParameterIndex = reader.readU1();
+                    super.addU1("typeParameterIndex");
                     break;
                 case 0x10:
-                    supertypeIndex = reader.readU2();
+                    super.addU2("supertypeIndex");
                     break;
                 case 0x11:
                 case 0x12:
-                    typeParameterIndex = reader.readU1();
-                    boundIndex = reader.readU1();
+                    super.addU1("typeParameterIndex");
+                    super.addU1("boundIndex");
                     break;
                 case 0x13:
                 case 0x14:
                 case 0x15:
                     break;
                 case 0x16:
-                    formalParameterIndex = reader.readU1();
+                    super.addU1("formalParameterIndex");
                     break;
                 case 0x17:
-                    throwsTypeIndex = reader.readU2();
+                    super.addU2("throwsTypeIndex");
                     break;
                 case 0x40:
                 case 0x41:
-                    tableLength = reader.readU2();
-                    table = reader.readTable(LocalVarInfo.class, tableLength);
+                    U2 tableLength = super.addU2("tableLength");
+                    super.addTable("table", tableLength, LocalVarInfo.class);
                     break;
                 case 0x42:
-                    exceptionTableIndex = reader.readU2();
+                    super.addU2("exceptionTableIndex");
                     break;
                 case 0x43:
                 case 0x44:
                 case 0x45:
                 case 0x46:
-                    offset = reader.readU2();
+                    super.addU2("offset");
                     break;
                 case 0x47:
                 case 0x48:
                 case 0x49:
                 case 0x4A:
                 case 0x4B:
-                    offset = reader.readU2();
-                    typeArgumentIndex = reader.readU1();
+                    super.addU2("offset");
+                    super.addU1("typeArgumentIndex");
                     break;
                 default: throw new ClassParseException("Invalid target_type: " + targetType);
             }
+            super.readContent(reader);
         }
         
     }

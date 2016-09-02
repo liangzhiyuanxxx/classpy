@@ -1,6 +1,5 @@
 package com.github.zxh.classpy.classfile;
 
-import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U4Hex;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
@@ -30,28 +29,22 @@ ClassFile {
 public class ClassFile extends ClassComponent {
 
     {
-        U2 constantPoolCount = new U2();
-        U2 interfacesCount = new U2();
-        U2 fieldsCount = new U2();
-        U2 methodsCount = new U2();
-        U2 attributesCount = new U2();
-
         super.addSubComponent("magic", new U4Hex());
         super.addSubComponent("minorVersion", new U2());
         super.addSubComponent("majorVersion", new U2());
-        super.addSubComponent("constantPoolCount", constantPoolCount);
+        U2 constantPoolCount = super.addU2("constantPoolCount");
         super.addSubComponent("constantPool", new ConstantPool(constantPoolCount));
         super.addSubComponent("accessFlags", new U2());
         super.addSubComponent("thisClass", new U2CpIndex());
         super.addSubComponent("superClass", new U2CpIndex());
-        super.addSubComponent("interfacesCount", interfacesCount);
-        super.addSubComponent("interfaces", new Table<>(U2CpIndex.class, interfacesCount));
-        super.addSubComponent("fieldsCount", fieldsCount);
-        super.addSubComponent("fields", new Table<>(FieldInfo.class, fieldsCount));
-        super.addSubComponent("methodsCount", methodsCount);
-        super.addSubComponent("methods", new Table<>(MethodInfo.class, methodsCount));
-        super.addSubComponent("attributesCount", attributesCount);
-        super.addSubComponent("attributes", new Table<>(AttributeInfo.class, attributesCount));
+        U2 interfacesCount = super.addU2("interfacesCount");
+        super.addTable("interfaces", interfacesCount, U2CpIndex.class);
+        U2 fieldsCount = super.addU2("fieldsCount");
+        super.addTable("fields", fieldsCount, FieldInfo.class);
+        U2 methodsCount = super.addU2("methodsCount");
+        super.addTable("methods", methodsCount, MethodInfo.class);
+        U2 attributesCount = super.addU2("attributesCount");
+        super.addTable("attributes", attributesCount, AttributeInfo.class);
     }
     
 }
