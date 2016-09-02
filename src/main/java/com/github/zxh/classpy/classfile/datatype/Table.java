@@ -14,11 +14,11 @@ import com.github.zxh.classpy.classfile.attribute.AttributeInfo;
 public class Table<E extends ClassComponent> extends ClassComponent {
 
     private final Class<E> classOfE;
-    private final int length;
+    private final U2 length;
 
-    public Table(Class<E> classOfE, int n) {
+    public Table(Class<E> classOfE, U2 length) {
         this.classOfE = classOfE;
-        this.length = n;
+        this.length = length;
     }
     
     @Override
@@ -29,7 +29,7 @@ public class Table<E extends ClassComponent> extends ClassComponent {
     
     private void readTable(ClassReader reader) {
         try {
-            for (int i = 0; i < length; i++) {
+            for (int i = 0; i < length.getValue(); i++) {
                 ClassComponent entry = readEntry(reader);
                 super.addSubComponent(entry);
             }

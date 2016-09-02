@@ -32,6 +32,16 @@ public abstract class ClassComponent {
     }
 
     protected void addSubComponent(ClassComponent c) {
+        this.addSubComponent(null, c);
+    }
+
+    protected void addSubComponent(String name, ClassComponent c) {
+        if (name != null) {
+            c.setName(name);
+        }
+        if (subComponents == null) {
+            subComponents = new ArrayList<>();
+        }
         subComponents.add(c);
     }
 
@@ -70,9 +80,6 @@ public abstract class ClassComponent {
      * @param reader 
      */
     protected void readContent(ClassReader reader) {
-        if (subComponents == null) {
-            subComponents = new ArrayList<>();
-        }
         for (ClassComponent cc : subComponents) {
             cc.read(reader);
         }

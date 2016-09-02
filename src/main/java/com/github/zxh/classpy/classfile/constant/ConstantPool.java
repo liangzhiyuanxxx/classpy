@@ -15,18 +15,18 @@ import java.util.stream.Collectors;
  */
 public class ConstantPool extends ClassComponent {
     
-    private final int cpCount;
-    private final ConstantInfo[] constants;
+    private final U2 cpCount;
+    private ConstantInfo[] constants;
 
-    public ConstantPool(int cpCount) {
+    public ConstantPool(U2 cpCount) {
         this.cpCount = cpCount;
-        constants = new ConstantInfo[cpCount];
     }
     
     @Override
     protected void readContent(ClassReader reader) {
+        constants = new ConstantInfo[cpCount.getValue()];
         // The constant_pool table is indexed from 1 to constant_pool_count - 1. 
-        for (int i = 1; i < cpCount; i++) {
+        for (int i = 1; i < cpCount.getValue(); i++) {
             ConstantInfo c = readConstantInfo(reader);
             setConstantName(c, i);
             constants[i] = c;
@@ -53,7 +53,7 @@ public class ConstantPool extends ClassComponent {
     
     // like #32: (Utf8)
     private void setConstantName(ConstantInfo constant, int idx) {
-        String idxStr = StringUtil.formatIndex(cpCount, idx);
+        String idxStr = StringUtil.formatIndex(cpCount.getValue(), idx);
         String constantName = constant.getClass().getSimpleName()
                 .replace("Constant", "")
                 .replace("Info", "");

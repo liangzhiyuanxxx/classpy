@@ -1,6 +1,5 @@
 package com.github.zxh.classpy.classfile;
 
-import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.datatype.Table;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U4Hex;
@@ -29,54 +28,30 @@ ClassFile {
 }
 */
 public class ClassFile extends ClassComponent {
-    
-    private U4Hex magic;
-    private U2 minorVersion;
-    private U2 majorVersion;
-    private U2 constantPoolCount;
-    private ConstantPool constantPool;
-    private U2 accessFlags;
-    private U2CpIndex thisClass;
-    private U2CpIndex superClass;
-    private U2 interfacesCount;
-    private Table<U2CpIndex> interfaces;
-    private U2 fieldsCount;
-    private Table<FieldInfo> fields;
-    private U2 methodsCount;
-    private Table<MethodInfo> methods;
-    private U2 attributesCount;
-    private Table<AttributeInfo> attributes;
-    
-    // Getters & Setters
-    public U4Hex getMagic() {return magic;}
-    public U2 getMinorVersion() {return minorVersion;}
-    public U2 getMajorVersion() {return majorVersion;}
-    public U2 getConstantPoolCount() {return constantPoolCount;}
-    public U2 getInterfacesCount() {return interfacesCount;}
-    public U2 getFieldsCount() {return fieldsCount;}
-    public U2 getMethodsCount() {return methodsCount;}
-    public U2 getAttributesCount() {return attributesCount;}
-    
-    @Override
-    protected void readContent(ClassReader reader) {
-        magic = reader.readU4Hex();
-        minorVersion = reader.readU2();
-        majorVersion = reader.readU2();
-        constantPoolCount = reader.readU2();
-        constantPool = reader.readConstantPool(constantPoolCount.getValue());
-        accessFlags = reader.readU2();
-        AccessFlags.describeClassFlags(accessFlags);
-        thisClass = reader.readU2CpIndex();
-        superClass = reader.readU2CpIndex();
-        interfacesCount = reader.readU2();
-        interfaces = reader.readTable(U2CpIndex.class, interfacesCount);
-        fieldsCount = reader.readU2();
-        fields = reader.readTable(FieldInfo.class, fieldsCount);
-        methodsCount = reader.readU2();
-        methods = reader.readTable(MethodInfo.class, methodsCount);
-        attributesCount = reader.readU2();
-        attributes = reader.readTable(AttributeInfo.class, attributesCount);
-        //setName("ClassFile"); // todo
+
+    {
+        U2 constantPoolCount = new U2();
+        U2 interfacesCount = new U2();
+        U2 fieldsCount = new U2();
+        U2 methodsCount = new U2();
+        U2 attributesCount = new U2();
+
+        super.addSubComponent("magic", new U4Hex());
+        super.addSubComponent("minorVersion", new U2());
+        super.addSubComponent("majorVersion", new U2());
+        super.addSubComponent("constantPoolCount", constantPoolCount);
+        super.addSubComponent("constantPool", new ConstantPool(constantPoolCount));
+        super.addSubComponent("accessFlags", new U2());
+        super.addSubComponent("thisClass", new U2CpIndex());
+        super.addSubComponent("superClass", new U2CpIndex());
+        super.addSubComponent("interfacesCount", interfacesCount);
+        super.addSubComponent("interfaces", new Table<>(U2CpIndex.class, interfacesCount));
+        super.addSubComponent("fieldsCount", fieldsCount);
+        super.addSubComponent("fields", new Table<>(FieldInfo.class, fieldsCount));
+        super.addSubComponent("methodsCount", methodsCount);
+        super.addSubComponent("methods", new Table<>(MethodInfo.class, methodsCount));
+        super.addSubComponent("attributesCount", attributesCount);
+        super.addSubComponent("attributes", new Table<>(AttributeInfo.class, attributesCount));
     }
     
 }
