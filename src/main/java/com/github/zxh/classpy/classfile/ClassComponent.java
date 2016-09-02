@@ -23,14 +23,8 @@ public abstract class ClassComponent {
     public final int getOffset() {return offset;}
     public final int getLength() {return length;}
 
-    public final void setDesc(char value) {
-        desc = Character.toString(value);
-    }
     public final void setDesc(int value) {
         desc = Integer.toString(value);
-    }
-    public final void setDesc(float value) {
-        desc = Float.toString(value);
     }
 
     /**

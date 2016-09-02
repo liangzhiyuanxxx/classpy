@@ -8,7 +8,7 @@ public class U4Float extends ClassComponent {
     @Override
     protected void readContent(ClassReader reader) {
         float value = reader.readFloat();
-        setDesc(value);
+        setDesc(Float.toString(value));
     }
     
 }
