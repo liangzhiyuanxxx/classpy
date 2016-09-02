@@ -1,7 +1,8 @@
 package com.github.zxh.classpy.classfile;
 
-import com.github.zxh.classpy.classfile.helper.ClassComponentHelper;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public abstract class ClassComponent {
     private String desc; // description
     private int offset; // the position of this FileComponent in the file
     private int length; // how many bytes this FileComponent has
+    private List<ClassComponent> subComponents;
     
     // Getters & Setters
     public final String getName() {return name;}
@@ -23,20 +25,10 @@ public abstract class ClassComponent {
     public final int getOffset() {return offset;}
     public final int getLength() {return length;}
 
-    /**
-     * Returns sub-components.
-     * 
-     * @return 
-     */
-    @SuppressWarnings("unchecked")
-    public List<? extends ClassComponent> getSubComponents() {
-        try {
-            return ClassComponentHelper.findSubComponents(this);
-        } catch (ReflectiveOperationException e) {
-            // todo
-            e.printStackTrace(System.err);
-            return Collections.EMPTY_LIST;
-        }
+    public List<ClassComponent> getSubComponents() {
+        return subComponents == null
+                ? Collections.EMPTY_LIST
+                : subComponents;
     }
     
     /**
@@ -73,6 +65,13 @@ public abstract class ClassComponent {
      * Reads content using ClassReader.
      * @param reader 
      */
-    protected abstract void readContent(ClassReader reader);
+    protected void readContent(ClassReader reader) {
+        if (subComponents == null) {
+            subComponents = new ArrayList<>();
+        }
+        for (ClassComponent cc : subComponents) {
+            cc.read(reader);
+        }
+    }
     
 }
