@@ -77,6 +77,7 @@ public abstract class ClassComponent {
         offset = reader.getPosition();
         readContent(reader);
         length = reader.getPosition() - offset;
+        afterRead(reader);
     }
     
     /**
@@ -88,5 +89,9 @@ public abstract class ClassComponent {
             cc.read(reader);
         }
     }
-    
+
+    protected void afterRead(ClassReader reader) {
+
+    }
+
 }

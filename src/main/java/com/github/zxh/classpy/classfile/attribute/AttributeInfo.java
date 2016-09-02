@@ -14,18 +14,16 @@ attribute_info {
  */
 public abstract class AttributeInfo extends ClassComponent {
 
-    protected U2 attributeNameIndex;
-    protected U4 attributeLength;
-    
-    @Override
-    protected final void readContent(ClassReader reader) {
-        attributeNameIndex = reader.readU2();
-        attributeLength = reader.readU4();
-        readInfo(reader);
-        setName(reader.getConstantPool().getUtf8String(attributeNameIndex));
+    {
+        super.addSubComponent("attributeNameIndex", new U2());
+        super.addSubComponent("attributeLength", new U4());
     }
-    
-    protected abstract void readInfo(ClassReader reader);
+
+    @Override
+    protected void afterRead(ClassReader reader) {
+        int attNameIndex = ((U2) super.getSubComponent(0)).getValue();
+        setName(reader.getConstantPool().getUtf8String(attNameIndex));
+    }
     
     
     /**
