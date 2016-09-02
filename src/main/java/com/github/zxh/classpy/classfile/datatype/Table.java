@@ -8,16 +8,14 @@ import com.github.zxh.classpy.classfile.attribute.AttributeInfo;
 
 /**
  * Array of class components.
- * 
- * @param <E> the type of entry in this table
  */
-public class Table<E extends ClassComponent> extends ClassComponent {
+public class Table extends ClassComponent {
 
-    private final Class<E> classOfE;
+    private final Class<? extends ClassComponent> entryClass;
     private final UInt length;
 
-    public Table(Class<E> classOfE, UInt length) {
-        this.classOfE = classOfE;
+    public Table(Class<? extends ClassComponent> entryClass, UInt length) {
+        this.entryClass = entryClass;
         this.length = length;
     }
     
@@ -37,16 +35,14 @@ public class Table<E extends ClassComponent> extends ClassComponent {
             throw new ClassParseException(e);
         }
     }
-    
-    private E readEntry(ClassReader reader) throws ReflectiveOperationException {
-        if (classOfE == AttributeInfo.class) {
-            @SuppressWarnings("unchecked")
-            E e = (E) readAttributeInfo(reader);
-            return e;
+
+    private ClassComponent readEntry(ClassReader reader) throws ReflectiveOperationException {
+        if (entryClass == AttributeInfo.class) {
+            return readAttributeInfo(reader);
         } else {
-            E e = classOfE.newInstance();
-            e.read(reader);
-            return e;
+            ClassComponent entry = entryClass.newInstance();
+            entry.read(reader);
+            return entry;
         }
     }
     
