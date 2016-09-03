@@ -1,6 +1,7 @@
 package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
+import com.github.zxh.classpy.classfile.bytecode.InstructionFactory;
 import com.github.zxh.classpy.classfile.datatype.U4;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.bytecode.Instruction;
@@ -26,7 +27,7 @@ public class Code extends ClassComponent {
             int pc = position - startPosition;
             byte b = reader.getByteBuffer().get(position);
             Opcode opcode = Opcode.valueOf(Byte.toUnsignedInt(b));
-            Instruction instruction = Instruction.create(opcode, pc);
+            Instruction instruction = InstructionFactory.create(opcode, pc);
             instruction.read(reader);
             add(instruction);
         }
