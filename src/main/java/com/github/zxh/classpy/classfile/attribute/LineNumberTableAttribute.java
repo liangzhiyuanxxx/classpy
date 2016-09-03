@@ -17,8 +17,8 @@ LineNumberTable_attribute {
 public class LineNumberTableAttribute extends AttributeInfo {
 
     {
-        U2 n = super.addU2("lineNumberTableLength");
-        super.addTable("lineNumberTable", n, LineNumberTableEntry.class);
+        super.addU2("lineNumberTableLength");
+        super.addTable("lineNumberTable", LineNumberTableEntry.class);
     }
 
     @Override

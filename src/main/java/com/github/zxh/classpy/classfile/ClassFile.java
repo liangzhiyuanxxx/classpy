@@ -37,14 +37,14 @@ public class ClassFile extends ClassComponent {
         super.add("accessFlags", new U2());
         super.add("thisClass", new U2CpIndex());
         super.add("superClass", new U2CpIndex());
-        U2 interfacesCount = super.addU2("interfacesCount");
-        super.addTable("interfaces", interfacesCount, U2CpIndex.class);
-        U2 fieldsCount = super.addU2("fieldsCount");
-        super.addTable("fields", fieldsCount, FieldInfo.class);
-        U2 methodsCount = super.addU2("methodsCount");
-        super.addTable("methods", methodsCount, MethodInfo.class);
-        U2 attributesCount = super.addU2("attributesCount");
-        super.addTable("attributes", attributesCount, AttributeInfo.class);
+        super.addU2("interfacesCount");
+        super.addTable("interfaces", U2CpIndex.class);
+        super.addU2("fieldsCount");
+        super.addTable("fields", FieldInfo.class);
+        super.addU2("methodsCount");
+        super.addTable("methods", MethodInfo.class);
+        super.addU2("attributesCount");
+        super.addTable("attributes", AttributeInfo.class);
     }
     
 }

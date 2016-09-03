@@ -18,8 +18,8 @@ RuntimeVisibleAnnotations_attribute {
 public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
 
     {
-        U2 n = super.addU2("numAnnotations");
-        super.addTable("annotations", n, AnnotationInfo.class);
+        super.addU2("numAnnotations");
+        super.addTable("annotations", AnnotationInfo.class);
     }
     
     /*
@@ -35,8 +35,8 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
 
         {
             super.add("typeIndex", new U2CpIndex());
-            U2 n = super.addU2("numElementValuePairs");
-            super.addTable("elementValuePairs", n, ElementValuePair.class);
+            super.addU2("numElementValuePairs");
+            super.addTable("elementValuePairs", ElementValuePair.class);
         }
 
         
@@ -154,8 +154,8 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
     public static class ArrayValue extends  ClassComponent {
 
         {
-            U2 n = super.addU2("numValues");
-            super.addTable("values", n, ElementValue.class);
+            super.addU2("numValues");
+            super.addTable("values", ElementValue.class);
         }
         
     }

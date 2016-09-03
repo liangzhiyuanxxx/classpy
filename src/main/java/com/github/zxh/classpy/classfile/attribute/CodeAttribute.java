@@ -30,10 +30,10 @@ public class CodeAttribute extends AttributeInfo {
         super.add("maxLocals", new U2());
         U4 codeLength = super.addU4("codeLength");
         super.add("code", new Code(codeLength));
-        U2 exceptionTableLength = super.addU2("exceptionTableLength");
-        super.addTable("exceptionTable", exceptionTableLength, ExceptionTableEntry.class);
-        U2 attributesCount = super.addU2("attributesCount");
-        super.addTable("attributes", attributesCount, AttributeInfo.class);
+        super.addU2("exceptionTableLength");
+        super.addTable("exceptionTable", ExceptionTableEntry.class);
+        super.addU2("attributesCount");
+        super.addTable("attributes", AttributeInfo.class);
     }
 
 

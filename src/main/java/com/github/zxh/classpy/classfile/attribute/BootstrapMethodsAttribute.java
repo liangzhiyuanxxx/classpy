@@ -18,8 +18,8 @@ BootstrapMethods_attribute {
 public class BootstrapMethodsAttribute extends AttributeInfo {
 
     {
-        U2 n = super.addU2("numBootstrapMethods");
-        super.addTable("bootstrapMethods", n, BootstrapMethodInfo.class);
+        super.addU2("numBootstrapMethods");
+        super.addTable("bootstrapMethods", BootstrapMethodInfo.class);
     }
 
     
@@ -27,8 +27,8 @@ public class BootstrapMethodsAttribute extends AttributeInfo {
 
         {
             super.add("bootstrapMethodRef", new U2CpIndex());
-            U2 n = super.addU2("numBootstrapArguments");
-            super.addTable("bootstrapArguments", n, U2CpIndex.class);
+            super.addU2("numBootstrapArguments");
+            super.addTable("bootstrapArguments", U2CpIndex.class);
         }
         
     }

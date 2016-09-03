@@ -21,8 +21,8 @@ InnerClasses_attribute {
 public class InnerClassesAttribute extends AttributeInfo {
 
     {
-        U2 n = super.addU2("numberOfClasses");
-        super.addTable("classes", n, InnerClassInfo.class);
+        super.addU2("numberOfClasses");
+        super.addTable("classes", InnerClassInfo.class);
     }
     
     

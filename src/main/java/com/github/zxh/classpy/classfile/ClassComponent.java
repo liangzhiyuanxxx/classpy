@@ -64,8 +64,9 @@ public abstract class ClassComponent {
         return u4;
     }
 
-    protected final void addTable(String name, UInt length,
-                            Class<? extends ClassComponent> entryClass) {
+    protected final void addTable(String name,
+                                  Class<? extends ClassComponent> entryClass) {
+        UInt length = (UInt) subComponents.get(subComponents.size() - 1);
         Table table = new Table(length, entryClass);
         this.add(name, table);
     }

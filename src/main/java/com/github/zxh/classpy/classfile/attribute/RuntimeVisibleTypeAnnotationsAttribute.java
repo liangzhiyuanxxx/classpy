@@ -19,8 +19,8 @@ RuntimeVisibleTypeAnnotations_attribute {
 public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
 
     {
-        U2 n = super.addU2("numAnnotations");
-        super.addTable("annotations", n, TypeAnnotationInfo.class);
+        super.addU2("numAnnotations");
+        super.addTable("annotations", TypeAnnotationInfo.class);
     }
     
     
@@ -150,8 +150,8 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
                     break;
                 case 0x40:
                 case 0x41:
-                    U2 tableLength = super.addU2("tableLength");
-                    super.addTable("table", tableLength, LocalVarInfo.class);
+                    super.addU2("tableLength");
+                    super.addTable("table", LocalVarInfo.class);
                     break;
                 case 0x42:
                     super.addU2("exceptionTableIndex");
@@ -203,8 +203,8 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
     public static class TypePath extends ClassComponent {
 
         {
-            U1 n = super.addU1("pathLength");
-            super.addTable("path", n, PathInfo.class);
+            super.addU1("pathLength");
+            super.addTable("path", PathInfo.class);
         }
         
     }

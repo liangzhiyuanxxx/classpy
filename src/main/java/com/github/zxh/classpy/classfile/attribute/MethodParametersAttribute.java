@@ -16,8 +16,8 @@ MethodParameters_attribute {
 public class MethodParametersAttribute extends AttributeInfo {
 
     {
-        U1 n = super.addU1("parametersCount");
-        super.addTable("parameters", n, ParameterInfo.class);
+        super.addU1("parametersCount");
+        super.addTable("parameters", ParameterInfo.class);
     }
 
     
