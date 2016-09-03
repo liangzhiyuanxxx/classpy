@@ -31,7 +31,7 @@ public class ClassFile extends ClassComponent {
     {
         U2 cpCount = new U2();
 
-        add      ("magic", new U4Hex());
+        u4hex    ("magic");
         u2       ("minor_version");
         u2       ("major_version");
         add      ("constant_pool_count", cpCount);

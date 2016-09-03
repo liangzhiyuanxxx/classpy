@@ -62,6 +62,10 @@ public abstract class ClassComponent {
         this.add(name, new U4());
     }
 
+    protected final void u4hex(String name) {
+        this.add(name, new U4Hex());
+    }
+
     protected final void table(String name,
                                Class<? extends ClassComponent> entryClass) {
         UInt length = (UInt) subComponents.get(subComponents.size() - 1);
