@@ -19,7 +19,7 @@ RuntimeVisibleTypeAnnotations_attribute {
 public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
 
     {
-        super.addU2("numAnnotations");
+        u2("numAnnotations");
         super.addTable("annotations", TypeAnnotationInfo.class);
     }
     
@@ -131,7 +131,7 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
                     super.addU1("typeParameterIndex");
                     break;
                 case 0x10:
-                    super.addU2("supertypeIndex");
+                    u2("supertypeIndex");
                     break;
                 case 0x11:
                 case 0x12:
@@ -146,28 +146,28 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
                     super.addU1("formalParameterIndex");
                     break;
                 case 0x17:
-                    super.addU2("throwsTypeIndex");
+                    u2("throwsTypeIndex");
                     break;
                 case 0x40:
                 case 0x41:
-                    super.addU2("tableLength");
+                    u2("tableLength");
                     super.addTable("table", LocalVarInfo.class);
                     break;
                 case 0x42:
-                    super.addU2("exceptionTableIndex");
+                    u2("exceptionTableIndex");
                     break;
                 case 0x43:
                 case 0x44:
                 case 0x45:
                 case 0x46:
-                    super.addU2("offset");
+                    u2("offset");
                     break;
                 case 0x47:
                 case 0x48:
                 case 0x49:
                 case 0x4A:
                 case 0x4B:
-                    super.addU2("offset");
+                    u2("offset");
                     super.addU1("typeArgumentIndex");
                     break;
                 default: throw new ClassParseException("Invalid target_type: " + targetType);

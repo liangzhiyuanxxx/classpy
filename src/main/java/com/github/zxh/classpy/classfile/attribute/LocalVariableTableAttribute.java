@@ -20,7 +20,7 @@ LocalVariableTable_attribute {
 public class LocalVariableTableAttribute extends AttributeInfo {
 
     {
-        super.addU2("localVariableTableLength");
+        u2("localVariableTableLength");
         super.addTable("localVariableTable", LocalVariableTableEntry.class);
     }
 
@@ -28,11 +28,11 @@ public class LocalVariableTableAttribute extends AttributeInfo {
     public static class LocalVariableTableEntry extends ClassComponent {
 
         {
-            super.addU2("startPc");
-            super.addU2("length");
+            u2("startPc");
+            u2("length");
             super.addU2CpIndex("nameIndex");
             super.addU2CpIndex("descriptorIndex");
-            super.addU2("index");
+            u2("index");
         }
 
         @Override

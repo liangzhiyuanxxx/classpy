@@ -13,7 +13,7 @@ StackMapTable_attribute {
 public class StackMapTableAttribute extends AttributeInfo {
 
     {
-        super.addU2("numberOfEntries");
+        u2("numberOfEntries");
     }
 
     @Override

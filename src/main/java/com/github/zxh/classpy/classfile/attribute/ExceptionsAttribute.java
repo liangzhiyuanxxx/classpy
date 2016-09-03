@@ -13,7 +13,7 @@ Exceptions_attribute {
 public class ExceptionsAttribute extends AttributeInfo {
 
     {
-        super.addU2("numberOfExceptions");
+        u2("numberOfExceptions");
         super.addTable("exceptionIndexTable", U2CpIndex.class);
     }
     

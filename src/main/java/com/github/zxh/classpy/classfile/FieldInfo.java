@@ -20,7 +20,7 @@ public class FieldInfo extends ClassComponent {
         super.add("accessFlags", new U2());
         super.add("nameIndex", new U2CpIndex());
         super.add("descriptorIndex", new U2CpIndex());
-        super.addU2("attributesCount");
+        u2("attributesCount");
         super.addTable("attributes", AttributeInfo.class);
     }
 

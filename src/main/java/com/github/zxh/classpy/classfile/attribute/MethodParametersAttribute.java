@@ -23,8 +23,8 @@ public class MethodParametersAttribute extends AttributeInfo {
     public static class ParameterInfo extends ClassComponent {
 
         {
-            super.addU2("nameIndex");
-            super.addU2("accessFlags");
+            u2("nameIndex");
+            u2("accessFlags");
         }
         
     }

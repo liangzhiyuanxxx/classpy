@@ -39,13 +39,13 @@ public class ClassFile extends ClassComponent {
         super.add("accessFlags", new U2());
         super.add("thisClass", new U2CpIndex());
         super.add("superClass", new U2CpIndex());
-        super.addU2("interfacesCount");
+        u2("interfacesCount");
         super.addTable("interfaces", U2CpIndex.class);
-        super.addU2("fieldsCount");
+        u2("fieldsCount");
         super.addTable("fields", FieldInfo.class);
-        super.addU2("methodsCount");
+        u2("methodsCount");
         super.addTable("methods", MethodInfo.class);
-        super.addU2("attributesCount");
+        u2("attributesCount");
         super.addTable("attributes", AttributeInfo.class);
     }
     

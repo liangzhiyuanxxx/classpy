@@ -26,7 +26,7 @@ public class RuntimeVisibleParameterAnnotationsAttribute extends AttributeInfo {
     public static class ParameterAnnotationInfo extends ClassComponent {
 
         {
-            super.addU2("numAnnotations");
+            u2("numAnnotations");
             super.addTable("annotations", AnnotationInfo.class);
         }
         

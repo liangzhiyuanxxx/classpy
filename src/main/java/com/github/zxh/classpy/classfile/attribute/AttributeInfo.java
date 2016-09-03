@@ -13,7 +13,7 @@ attribute_info {
 public abstract class AttributeInfo extends ClassComponent {
 
     {
-        super.addU2("attributeNameIndex");
+        u2("attributeNameIndex");
         super.addU4("attributeLength");
     }
 

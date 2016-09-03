@@ -17,7 +17,7 @@ BootstrapMethods_attribute {
 public class BootstrapMethodsAttribute extends AttributeInfo {
 
     {
-        super.addU2("numBootstrapMethods");
+        u2("numBootstrapMethods");
         super.addTable("bootstrapMethods", BootstrapMethodInfo.class);
     }
 
@@ -26,7 +26,7 @@ public class BootstrapMethodsAttribute extends AttributeInfo {
 
         {
             super.addU2CpIndex("bootstrapMethodRef");
-            super.addU2("numBootstrapArguments");
+            u2("numBootstrapArguments");
             super.addTable("bootstrapArguments", U2CpIndex.class);
         }
         

@@ -50,7 +50,7 @@ public abstract class ClassComponent {
         this.add(name, new U1());
     }
 
-    protected final void addU2(String name) {
+    protected final void u2(String name) {
         this.add(name, new U2());
     }
 

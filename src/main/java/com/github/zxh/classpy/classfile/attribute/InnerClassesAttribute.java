@@ -20,7 +20,7 @@ InnerClasses_attribute {
 public class InnerClassesAttribute extends AttributeInfo {
 
     {
-        super.addU2("numberOfClasses");
+        u2("numberOfClasses");
         super.addTable("classes", InnerClassInfo.class);
     }
     
@@ -31,7 +31,7 @@ public class InnerClassesAttribute extends AttributeInfo {
             super.addU2CpIndex("innerClassInfoIndex");
             super.addU2CpIndex("outerClassInfoIndex");
             super.addU2CpIndex("innerNameIndex");
-            super.addU2("innerClassAccessFlags");
+            u2("innerClassAccessFlags");
         }
 
         @Override

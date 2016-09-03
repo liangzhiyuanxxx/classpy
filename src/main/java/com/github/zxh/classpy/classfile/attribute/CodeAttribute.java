@@ -26,13 +26,13 @@ public class CodeAttribute extends AttributeInfo {
     {
         U4 codeLength = new U4();
 
-        super.addU2("maxStack");
-        super.addU2("maxLocals");
+        u2("maxStack");
+        u2("maxLocals");
         super.add("codeLength", codeLength);
         super.add("code", new Code(codeLength));
-        super.addU2("exceptionTableLength");
+        u2("exceptionTableLength");
         super.addTable("exceptionTable", ExceptionTableEntry.class);
-        super.addU2("attributesCount");
+        u2("attributesCount");
         super.addTable("attributes", AttributeInfo.class);
     }
 
@@ -40,9 +40,9 @@ public class CodeAttribute extends AttributeInfo {
     public static class ExceptionTableEntry extends ClassComponent {
 
         {
-            super.addU2("startPc");
-            super.addU2("endPc");
-            super.addU2("handlerPc");
+            u2("startPc");
+            u2("endPc");
+            u2("handlerPc");
             super.addU2CpIndex("catchType");
         }
 

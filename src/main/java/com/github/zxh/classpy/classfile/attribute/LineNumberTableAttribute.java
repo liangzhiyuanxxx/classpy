@@ -17,7 +17,7 @@ LineNumberTable_attribute {
 public class LineNumberTableAttribute extends AttributeInfo {
 
     {
-        super.addU2("lineNumberTableLength");
+        u2("lineNumberTableLength");
         super.addTable("lineNumberTable", LineNumberTableEntry.class);
     }
 
@@ -25,8 +25,8 @@ public class LineNumberTableAttribute extends AttributeInfo {
     public static class LineNumberTableEntry extends ClassComponent {
 
         {
-            super.addU2("startPc");
-            super.addU2("lineNumber");
+            u2("startPc");
+            u2("lineNumber");
         }
 
         @Override
