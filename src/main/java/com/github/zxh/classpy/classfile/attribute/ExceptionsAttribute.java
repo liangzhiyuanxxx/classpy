@@ -14,7 +14,7 @@ public class ExceptionsAttribute extends AttributeInfo {
 
     {
         u2("numberOfExceptions");
-        super.addTable("exceptionIndexTable", U2CpIndex.class);
+        table("exceptionIndexTable", U2CpIndex.class);
     }
     
 }

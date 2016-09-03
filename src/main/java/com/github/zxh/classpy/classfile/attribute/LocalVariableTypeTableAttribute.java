@@ -21,7 +21,7 @@ public class LocalVariableTypeTableAttribute extends AttributeInfo {
 
     {
         u2("localVariableTypeTableLength");
-        super.addTable("localVariableTypeTable", LocalVariableTypeTableEntry.class);
+        table("localVariableTypeTable", LocalVariableTypeTableEntry.class);
     }
 
 

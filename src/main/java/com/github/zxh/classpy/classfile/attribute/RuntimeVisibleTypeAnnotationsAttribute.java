@@ -20,7 +20,7 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
 
     {
         u2("numAnnotations");
-        super.addTable("annotations", TypeAnnotationInfo.class);
+        table("annotations", TypeAnnotationInfo.class);
     }
     
     
@@ -151,7 +151,7 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
                 case 0x40:
                 case 0x41:
                     u2("tableLength");
-                    super.addTable("table", LocalVarInfo.class);
+                    table("table", LocalVarInfo.class);
                     break;
                 case 0x42:
                     u2("exceptionTableIndex");
@@ -204,7 +204,7 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
 
         {
             u1("pathLength");
-            super.addTable("path", PathInfo.class);
+            table("path", PathInfo.class);
         }
         
     }

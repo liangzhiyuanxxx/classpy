@@ -21,7 +21,7 @@ public class FieldInfo extends ClassComponent {
         super.add("nameIndex", new U2CpIndex());
         super.add("descriptorIndex", new U2CpIndex());
         u2("attributesCount");
-        super.addTable("attributes", AttributeInfo.class);
+        table("attributes", AttributeInfo.class);
     }
 
     @Override

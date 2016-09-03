@@ -19,7 +19,7 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
 
     {
         u2("numAnnotations");
-        super.addTable("annotations", AnnotationInfo.class);
+        table("annotations", AnnotationInfo.class);
     }
     
     /*
@@ -36,7 +36,7 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
         {
             u2CpIndex("typeIndex");
             u2("numElementValuePairs");
-            super.addTable("elementValuePairs", ElementValuePair.class);
+            table("elementValuePairs", ElementValuePair.class);
         }
 
         
@@ -152,7 +152,7 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
 
         {
             u2("numValues");
-            super.addTable("values", ElementValue.class);
+            table("values", ElementValue.class);
         }
         
     }

@@ -31,9 +31,9 @@ public class CodeAttribute extends AttributeInfo {
         super.add("codeLength", codeLength);
         super.add("code", new Code(codeLength));
         u2("exceptionTableLength");
-        super.addTable("exceptionTable", ExceptionTableEntry.class);
+        table("exceptionTable", ExceptionTableEntry.class);
         u2("attributesCount");
-        super.addTable("attributes", AttributeInfo.class);
+        table("attributes", AttributeInfo.class);
     }
 
 

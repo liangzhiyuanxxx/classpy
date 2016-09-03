@@ -18,7 +18,7 @@ public class LineNumberTableAttribute extends AttributeInfo {
 
     {
         u2("lineNumberTableLength");
-        super.addTable("lineNumberTable", LineNumberTableEntry.class);
+        table("lineNumberTable", LineNumberTableEntry.class);
     }
 
     

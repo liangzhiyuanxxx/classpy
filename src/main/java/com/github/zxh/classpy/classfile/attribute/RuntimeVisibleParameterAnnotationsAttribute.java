@@ -19,7 +19,7 @@ public class RuntimeVisibleParameterAnnotationsAttribute extends AttributeInfo {
 
     {
         u1("numParameters");
-        super.addTable("parameterAnnotations", ParameterAnnotationInfo.class);
+        table("parameterAnnotations", ParameterAnnotationInfo.class);
     }
     
     
@@ -27,7 +27,7 @@ public class RuntimeVisibleParameterAnnotationsAttribute extends AttributeInfo {
 
         {
             u2("numAnnotations");
-            super.addTable("annotations", AnnotationInfo.class);
+            table("annotations", AnnotationInfo.class);
         }
         
     }
