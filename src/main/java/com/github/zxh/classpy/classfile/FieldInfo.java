@@ -28,13 +28,13 @@ public class FieldInfo extends ClassComponent {
     protected void readContent(ClassReader reader) {
         super.readContent(reader);
 
-        int nameIndex = ((U2CpIndex) super.getSubComponent(1)).getValue();
+        int nameIndex = ((U2CpIndex) super.get("nameIndex")).getValue();
         if (nameIndex > 0) {
             // todo fix loading java.lang.String from rt.jar
             setDesc(reader.getConstantPool().getUtf8String(nameIndex));
         }
 
-        describe((U2) super.getSubComponent(0));
+        describe((U2) super.get("accessFlags"));
     }
     
     protected void describe(U2 accessFlags) {

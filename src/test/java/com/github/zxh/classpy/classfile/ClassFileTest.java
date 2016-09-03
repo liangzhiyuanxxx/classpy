@@ -22,15 +22,15 @@ public class ClassFileTest {
     @Test
     public void simpleClass() throws Exception {
         ClassFile cf = loadClass(SimpleClass.class);
-        assertEquals(0, ((U2) cf.getSubComponent(1)).getValue());
-        assertEquals(52, ((U2) cf.getSubComponent(2)).getValue());
-        assertEquals(37, ((U2) cf.getSubComponent(3)).getValue());
-        assertEquals(2, ((U2) cf.getSubComponent(8)).getValue());
-        assertEquals(2, ((U2) cf.getSubComponent(10)).getValue());
-        assertEquals(5, ((U2) cf.getSubComponent(12)).getValue());
-        assertEquals(2, ((U2) cf.getSubComponent(14)).getValue());
+        assertEquals(0, ((U2) cf.get("minorVersion")).getValue());
+        assertEquals(52, ((U2) cf.get("majorVersion")).getValue());
+        assertEquals(37, ((U2) cf.get("constantPoolCount")).getValue());
+        assertEquals(2, ((U2) cf.get("interfacesCount")).getValue());
+        assertEquals(2, ((U2) cf.get("fieldsCount")).getValue());
+        assertEquals(5, ((U2) cf.get("methodsCount")).getValue());
+        assertEquals(2, ((U2) cf.get("attributesCount")).getValue());
     }
-    
+
     @Test
     public void constantPool() throws Exception {
         loadClass(ConstantPool.class);

@@ -1,8 +1,6 @@
 package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
-import com.github.zxh.classpy.classfile.reader.ClassReader;
-import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U4;
 
 /*
@@ -20,7 +18,7 @@ public abstract class AttributeInfo extends ClassComponent {
     }
 
     protected int getAttributeLength() {
-        return ((U4) super.getSubComponent(1)).getValue();
+        return ((U4) super.get("attributeLength")).getValue();
     }
 
     

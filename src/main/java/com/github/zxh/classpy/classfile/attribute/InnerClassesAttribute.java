@@ -37,7 +37,7 @@ public class InnerClassesAttribute extends AttributeInfo {
 
         @Override
         protected void afterRead(ClassReader reader) {
-            AccessFlags.describeInnerClassFlags((U2) super.getSubComponent(3));
+            AccessFlags.describeInnerClassFlags((U2) super.get("innerClassAccessFlags"));
         }
         
     }

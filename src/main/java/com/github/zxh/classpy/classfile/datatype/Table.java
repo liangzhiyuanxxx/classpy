@@ -54,10 +54,9 @@ public class Table extends ClassComponent {
 
     @Override
     protected void afterRead(ClassReader reader) {
-        for (int i = 0; i < length.getValue(); i++) {
-            ClassComponent entry = super.getSubComponent(i);
-
-            String newName = StringUtil.formatIndex(length.getValue(), i);
+        int i = 0;
+        for (ClassComponent entry : super.getSubComponents()) {
+            String newName = StringUtil.formatIndex(length.getValue(), i++);
             String oldName = entry.getName();
             if (oldName != null) {
                 newName += " (" + oldName + ")";
