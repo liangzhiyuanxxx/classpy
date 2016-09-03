@@ -34,7 +34,7 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
     public static class AnnotationInfo extends ClassComponent {
 
         {
-            super.addU2CpIndex("typeIndex");
+            u2CpIndex("typeIndex");
             u2("numElementValuePairs");
             super.addTable("elementValuePairs", ElementValuePair.class);
         }
@@ -142,8 +142,8 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
     public static class EnumConstValue extends ClassComponent {
 
         {
-            super.addU2CpIndex("typeNameIndex");
-            super.addU2CpIndex("constNameIndex");
+            u2CpIndex("typeNameIndex");
+            u2CpIndex("constNameIndex");
         }
         
     }
