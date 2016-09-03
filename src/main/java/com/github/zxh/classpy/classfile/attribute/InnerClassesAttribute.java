@@ -28,9 +28,9 @@ public class InnerClassesAttribute extends AttributeInfo {
     public static class InnerClassInfo extends ClassComponent {
 
         {
-            u2CpIndex("innerClassInfoIndex");
-            u2CpIndex("outerClassInfoIndex");
-            u2CpIndex("innerNameIndex");
+            u2cp("innerClassInfoIndex");
+            u2cp("outerClassInfoIndex");
+            u2cp("innerNameIndex");
             u2("innerClassAccessFlags");
         }
 

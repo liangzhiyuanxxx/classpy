@@ -43,7 +43,7 @@ public class CodeAttribute extends AttributeInfo {
             u2("startPc");
             u2("endPc");
             u2("handlerPc");
-            u2CpIndex("catchType");
+            u2cp("catchType");
         }
 
     }

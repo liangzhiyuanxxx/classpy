@@ -10,7 +10,7 @@ ConstantValue_attribute {
 public class ConstantValueAttribute extends AttributeInfo {
 
     {
-        u2CpIndex("constantValueIndex");
+        u2cp("constantValueIndex");
     }
     
 }

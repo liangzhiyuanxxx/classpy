@@ -1,7 +1,6 @@
 package com.github.zxh.classpy.classfile;
 
 import com.github.zxh.classpy.classfile.datatype.U2;
-import com.github.zxh.classpy.classfile.datatype.U4Hex;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 import com.github.zxh.classpy.classfile.attribute.AttributeInfo;
 import com.github.zxh.classpy.classfile.constant.ConstantPool;
@@ -31,22 +30,22 @@ public class ClassFile extends ClassComponent {
     {
         U2 cpCount = new U2();
 
-        u4hex    ("magic");
-        u2       ("minor_version");
-        u2       ("major_version");
-        add      ("constant_pool_count", cpCount);
-        add      ("constant_pool", new ConstantPool(cpCount));
-        u2       ("access_flags");
-        u2CpIndex("this_class");
-        u2CpIndex("super_class");
-        u2       ("interfaces_count");
-        table    ("interfaces", U2CpIndex.class);
-        u2       ("fields_count");
-        table    ("fields", FieldInfo.class);
-        u2       ("methods_count");
-        table    ("methods", MethodInfo.class);
-        u2       ("attributes_count");
-        table    ("attributes", AttributeInfo.class);
+        u4hex("magic");
+        u2   ("minor_version");
+        u2   ("major_version");
+        add  ("constant_pool_count", cpCount);
+        add  ("constant_pool", new ConstantPool(cpCount));
+        u2   ("access_flags");
+        u2cp ("this_class");
+        u2cp ("super_class");
+        u2   ("interfaces_count");
+        table("interfaces", U2CpIndex.class);
+        u2   ("fields_count");
+        table("fields", FieldInfo.class);
+        u2   ("methods_count");
+        table("methods", MethodInfo.class);
+        u2   ("attributes_count");
+        table("attributes", AttributeInfo.class);
     }
     
 }

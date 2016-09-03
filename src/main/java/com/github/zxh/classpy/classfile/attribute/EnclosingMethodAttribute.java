@@ -11,8 +11,8 @@ EnclosingMethod_attribute {
 public class EnclosingMethodAttribute extends AttributeInfo {
 
     {
-        u2CpIndex("classIndex");
-        u2CpIndex("methodIndex");
+        u2cp("classIndex");
+        u2cp("methodIndex");
     }
 
 }
