@@ -58,7 +58,7 @@ public abstract class ClassComponent {
         this.add(name, new U2CpIndex());
     }
 
-    protected final void addU4(String name) {
+    protected final void u4(String name) {
         this.add(name, new U4());
     }
 

@@ -14,7 +14,7 @@ public abstract class AttributeInfo extends ClassComponent {
 
     {
         u2("attributeNameIndex");
-        super.addU4("attributeLength");
+        u4("attributeLength");
     }
 
     protected int getAttributeLength() {
