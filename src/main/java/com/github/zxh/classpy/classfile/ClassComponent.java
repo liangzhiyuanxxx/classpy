@@ -46,22 +46,16 @@ public abstract class ClassComponent {
         return null;
     }
 
-    protected final U1 addU1(String name) {
-        U1 u1 = new U1();
-        this.add(name, u1);
-        return u1;
+    protected final void addU1(String name) {
+        this.add(name, new U1());
     }
 
-    protected final U2 addU2(String name) {
-        U2 u2 = new U2();
-        this.add(name, u2);
-        return u2;
+    protected final void addU2(String name) {
+        this.add(name, new U2());
     }
 
-    protected final U4 addU4(String name) {
-        U4 u4 = new U4();
-        this.add(name, u4);
-        return u4;
+    protected final void addU4(String name) {
+        this.add(name, new U4());
     }
 
     protected final void addTable(String name,

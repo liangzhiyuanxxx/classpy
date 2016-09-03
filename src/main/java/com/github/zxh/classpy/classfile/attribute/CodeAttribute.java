@@ -26,9 +26,11 @@ Code_attribute {
 public class CodeAttribute extends AttributeInfo {
 
     {
+        U4 codeLength = new U4();
+
         super.add("maxStack", new U2());
         super.add("maxLocals", new U2());
-        U4 codeLength = super.addU4("codeLength");
+        super.add("codeLength", codeLength);
         super.add("code", new Code(codeLength));
         super.addU2("exceptionTableLength");
         super.addTable("exceptionTable", ExceptionTableEntry.class);

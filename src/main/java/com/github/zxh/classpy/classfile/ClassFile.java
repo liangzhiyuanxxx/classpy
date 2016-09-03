@@ -29,10 +29,12 @@ ClassFile {
 public class ClassFile extends ClassComponent {
 
     {
+        U2 constantPoolCount = new U2();
+
         super.add("magic", new U4Hex());
         super.add("minorVersion", new U2());
         super.add("majorVersion", new U2());
-        U2 constantPoolCount = super.addU2("constantPoolCount");
+        super.add("constantPoolCount", constantPoolCount);
         super.add("constantPool", new ConstantPool(constantPoolCount));
         super.add("accessFlags", new U2());
         super.add("thisClass", new U2CpIndex());
