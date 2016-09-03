@@ -29,24 +29,24 @@ ClassFile {
 public class ClassFile extends ClassComponent {
 
     {
-        U2 constantPoolCount = new U2();
+        U2 cpCount = new U2();
 
-        add("magic", new U4Hex());
-        add("minorVersion", new U2());
-        add("majorVersion", new U2());
-        add("constantPoolCount", constantPoolCount);
-        add("constantPool", new ConstantPool(constantPoolCount));
-        add("accessFlags", new U2());
-        add("thisClass", new U2CpIndex());
-        add("superClass", new U2CpIndex());
-        u2("interfacesCount");
-        table("interfaces", U2CpIndex.class);
-        u2("fieldsCount");
-        table("fields", FieldInfo.class);
-        u2("methodsCount");
-        table("methods", MethodInfo.class);
-        u2("attributesCount");
-        table("attributes", AttributeInfo.class);
+        add      ("magic", new U4Hex());
+        u2       ("minor_version");
+        u2       ("major_version");
+        add      ("constant_pool_count", cpCount);
+        add      ("constant_pool", new ConstantPool(cpCount));
+        u2       ("access_flags");
+        u2CpIndex("this_class");
+        u2CpIndex("super_class");
+        u2       ("interfaces_count");
+        table    ("interfaces", U2CpIndex.class);
+        u2       ("fields_count");
+        table    ("fields", FieldInfo.class);
+        u2       ("methods_count");
+        table    ("methods", MethodInfo.class);
+        u2       ("attributes_count");
+        table    ("attributes", AttributeInfo.class);
     }
     
 }
