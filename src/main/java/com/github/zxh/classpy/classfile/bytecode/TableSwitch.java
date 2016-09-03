@@ -40,10 +40,10 @@ public class TableSwitch extends Instruction {
         // high - low + 1 signed 32-bit offsets
         for (int i = low; i <= high; i++) {
             JumpOffset offset = readJumpOffset(reader, String.valueOf(i));
-            super.add(offset);
+            add(offset);
         }
 
-        super.add(defaultOffset);
+        add(defaultOffset);
     }
     
     private void skipPadding(ClassReader reader) {

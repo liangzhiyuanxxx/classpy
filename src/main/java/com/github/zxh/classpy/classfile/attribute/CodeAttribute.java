@@ -28,8 +28,8 @@ public class CodeAttribute extends AttributeInfo {
 
         u2("maxStack");
         u2("maxLocals");
-        super.add("codeLength", codeLength);
-        super.add("code", new Code(codeLength));
+        add("codeLength", codeLength);
+        add("code", new Code(codeLength));
         u2("exceptionTableLength");
         table("exceptionTable", ExceptionTableEntry.class);
         u2("attributesCount");

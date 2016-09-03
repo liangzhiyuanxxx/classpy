@@ -12,7 +12,7 @@ SourceFile_attribute {
 public class SourceFileAttribute extends AttributeInfo {
 
     {
-        super.add("sourceFileIndex", new U2CpIndex());
+        add("sourceFileIndex", new U2CpIndex());
     }
 
 }

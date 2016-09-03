@@ -35,10 +35,10 @@ public class LookupSwitch extends Instruction {
         for (int i = 0; i < npairs; i++) {
             MatchOffset offset = new MatchOffset(false, pc);
             offset.read(reader);
-            super.add(offset);
+            add(offset);
         }
         
-        super.add(defaultOffset);
+        add(defaultOffset);
     }
     
     private void skipPadding(ClassReader reader) {

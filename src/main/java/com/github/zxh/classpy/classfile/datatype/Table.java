@@ -24,7 +24,7 @@ public class Table extends ClassComponent {
         try {
             for (int i = 0; i < length.getValue(); i++) {
                 ClassComponent c = readEntry(reader);
-                super.add(c);
+                add(c);
             }
         } catch (ReflectiveOperationException e) {
             throw new ClassParseException(e);

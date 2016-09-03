@@ -28,7 +28,7 @@ public class Code extends ClassComponent {
             Opcode opcode = Opcode.valueOf(Byte.toUnsignedInt(b));
             Instruction instruction = Instruction.create(opcode, pc);
             instruction.read(reader);
-            super.add(instruction);
+            add(instruction);
         }
     }
 

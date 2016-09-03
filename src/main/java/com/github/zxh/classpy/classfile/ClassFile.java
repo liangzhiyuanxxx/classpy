@@ -31,14 +31,14 @@ public class ClassFile extends ClassComponent {
     {
         U2 constantPoolCount = new U2();
 
-        super.add("magic", new U4Hex());
-        super.add("minorVersion", new U2());
-        super.add("majorVersion", new U2());
-        super.add("constantPoolCount", constantPoolCount);
-        super.add("constantPool", new ConstantPool(constantPoolCount));
-        super.add("accessFlags", new U2());
-        super.add("thisClass", new U2CpIndex());
-        super.add("superClass", new U2CpIndex());
+        add("magic", new U4Hex());
+        add("minorVersion", new U2());
+        add("majorVersion", new U2());
+        add("constantPoolCount", constantPoolCount);
+        add("constantPool", new ConstantPool(constantPoolCount));
+        add("accessFlags", new U2());
+        add("thisClass", new U2CpIndex());
+        add("superClass", new U2CpIndex());
         u2("interfacesCount");
         table("interfaces", U2CpIndex.class);
         u2("fieldsCount");
