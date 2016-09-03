@@ -46,7 +46,7 @@ public abstract class ClassComponent {
         return null;
     }
 
-    protected final void addU1(String name) {
+    protected final void u1(String name) {
         this.add(name, new U1());
     }
 

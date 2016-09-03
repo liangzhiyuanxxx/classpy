@@ -128,22 +128,22 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
             switch (targetType) {
                 case 0x00:
                 case 0x01:
-                    super.addU1("typeParameterIndex");
+                    u1("typeParameterIndex");
                     break;
                 case 0x10:
                     u2("supertypeIndex");
                     break;
                 case 0x11:
                 case 0x12:
-                    super.addU1("typeParameterIndex");
-                    super.addU1("boundIndex");
+                    u1("typeParameterIndex");
+                    u1("boundIndex");
                     break;
                 case 0x13:
                 case 0x14:
                 case 0x15:
                     break;
                 case 0x16:
-                    super.addU1("formalParameterIndex");
+                    u1("formalParameterIndex");
                     break;
                 case 0x17:
                     u2("throwsTypeIndex");
@@ -168,7 +168,7 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
                 case 0x4A:
                 case 0x4B:
                     u2("offset");
-                    super.addU1("typeArgumentIndex");
+                    u1("typeArgumentIndex");
                     break;
                 default: throw new ClassParseException("Invalid target_type: " + targetType);
             }
@@ -203,7 +203,7 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
     public static class TypePath extends ClassComponent {
 
         {
-            super.addU1("pathLength");
+            u1("pathLength");
             super.addTable("path", PathInfo.class);
         }
         
