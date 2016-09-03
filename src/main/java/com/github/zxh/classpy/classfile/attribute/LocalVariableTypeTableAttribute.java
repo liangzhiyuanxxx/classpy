@@ -3,7 +3,6 @@ package com.github.zxh.classpy.classfile.attribute;
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.datatype.U2;
-import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 
 /*
 LocalVariableTypeTable_attribute {
@@ -31,14 +30,15 @@ public class LocalVariableTypeTableAttribute extends AttributeInfo {
         {
             super.addU2("startPc");
             super.addU2("length");
-            super.add("nameIndex", new U2CpIndex());
-            super.add("signatureIndex", new U2CpIndex());
+            super.addU2CpIndex("nameIndex");
+            super.addU2CpIndex("signatureIndex");
             super.addU2("index");
         }
 
         @Override
         protected void afterRead(ClassReader reader) {
-            //setDesc(reader.getConstantPool().getUtf8String(nameIndex));
+            int nameIndex = ((U2) super.get("nameIndex")).getValue();
+            setDesc(reader.getConstantPool().getUtf8String(nameIndex));
         }
     
     }

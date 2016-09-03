@@ -1,8 +1,6 @@
 package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
-import com.github.zxh.classpy.classfile.datatype.U2;
-import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 import com.github.zxh.classpy.classfile.datatype.U4;
 
 /*
@@ -28,8 +26,8 @@ public class CodeAttribute extends AttributeInfo {
     {
         U4 codeLength = new U4();
 
-        super.add("maxStack", new U2());
-        super.add("maxLocals", new U2());
+        super.addU2("maxStack");
+        super.addU2("maxLocals");
         super.add("codeLength", codeLength);
         super.add("code", new Code(codeLength));
         super.addU2("exceptionTableLength");
@@ -42,10 +40,10 @@ public class CodeAttribute extends AttributeInfo {
     public static class ExceptionTableEntry extends ClassComponent {
 
         {
-            super.add("startPc", new U2());
-            super.add("endPc", new U2());
-            super.add("handlerPc", new U2());
-            super.add("catchType", new U2CpIndex());
+            super.addU2("startPc");
+            super.addU2("endPc");
+            super.addU2("handlerPc");
+            super.addU2CpIndex("catchType");
         }
 
     }

@@ -3,7 +3,6 @@ package com.github.zxh.classpy.classfile.attribute;
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.datatype.U2;
-import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 
 /*
 LocalVariableTable_attribute {
@@ -31,21 +30,21 @@ public class LocalVariableTableAttribute extends AttributeInfo {
         {
             super.addU2("startPc");
             super.addU2("length");
-            super.add("nameIndex", new U2CpIndex());
-            super.add("descriptorIndex", new U2CpIndex());
+            super.addU2CpIndex("nameIndex");
+            super.addU2CpIndex("descriptorIndex");
             super.addU2("index");
         }
 
         @Override
         protected void afterRead(ClassReader reader) {
-            setDesc(reader);
-        }
-        
-        private void setDesc(ClassReader reader) {
-//            String varName = reader.getConstantPool().getConstantDesc(nameIndex.getValue());
-//            int fromPc = startPc.getValue();
-//            int toPc = fromPc + length.getValue() - 1;
-//            setDesc(String.format("%s(%d~%d)", varName, fromPc, toPc));
+            int startPc = ((U2) super.get("startPc")).getValue();
+            int length = ((U2) super.get("length")).getValue();
+            int nameIndex = ((U2) super.get("nameIndex")).getValue();
+
+            int fromPc = startPc;
+            int toPc = fromPc + length - 1;
+            String varName = reader.getConstantPool().getConstantDesc(nameIndex);
+            setDesc(String.format("%s(%d~%d)", varName, fromPc, toPc));
         }
         
     }

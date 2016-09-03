@@ -21,20 +21,20 @@ public class LineNumberTableAttribute extends AttributeInfo {
         super.addTable("lineNumberTable", LineNumberTableEntry.class);
     }
 
-    @Override
-    protected void afterRead(ClassReader reader) {
-//        lineNumberTable.getSubComponents().forEach(entry -> {
-//            entry.setName("line " + entry.lineNumber.getValue());
-//            entry.setDesc(Integer.toString(entry.startPc.getValue()));
-//        });
-    }
-    
     
     public static class LineNumberTableEntry extends ClassComponent {
 
         {
-            super.add("startPc", new U2());
-            super.add("lineNumber", new U2());
+            super.addU2("startPc");
+            super.addU2("lineNumber");
+        }
+
+        @Override
+        protected void afterRead(ClassReader reader) {
+            int lineNumber = ((U2) super.get("lineNumber")).getValue();
+            int startPc = ((U2) super.get("startPc")).getValue();
+            setName("line " + lineNumber);
+            setDesc(Integer.toString(startPc));
         }
 
     }

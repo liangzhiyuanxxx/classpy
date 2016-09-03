@@ -6,6 +6,8 @@ import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.bytecode.Instruction;
 import com.github.zxh.classpy.classfile.bytecode.Opcode;
 
+import java.util.List;
+
 public class Code extends ClassComponent {
 
     private final U4 codeLength;
@@ -28,17 +30,19 @@ public class Code extends ClassComponent {
             instruction.read(reader);
             super.add(instruction);
         }
-        
-        setInstructionName();
     }
-    
-    private void setInstructionName() {
-//        int maxPc = instructions.get(instructions.size() - 1).getPc();
-//        int pcWidth = String.valueOf(maxPc).length();
-//        String fmtStr = "%0" + pcWidth + "d";
-//        instructions.forEach(instruction -> {
-//            instruction.setName(String.format(fmtStr, instruction.getPc()));
-//        });
+
+    @Override
+    protected void afterRead(ClassReader reader) {
+        List<ClassComponent> instructions = super.getSubComponents();
+
+        int maxPc = ((Instruction) instructions.get(instructions.size() - 1)).getPc();
+        int pcWidth = String.valueOf(maxPc).length();
+        String fmtStr = "%0" + pcWidth + "d";
+        for (ClassComponent c : instructions) {
+            Instruction instruction = (Instruction) c;
+            instruction.setName(String.format(fmtStr, instruction.getPc()));
+        }
     }
 
 }

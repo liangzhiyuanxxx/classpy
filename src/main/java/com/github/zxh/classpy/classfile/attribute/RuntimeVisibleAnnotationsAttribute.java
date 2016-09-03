@@ -34,7 +34,7 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
     public static class AnnotationInfo extends ClassComponent {
 
         {
-            super.add("typeIndex", new U2CpIndex());
+            super.addU2CpIndex("typeIndex");
             super.addU2("numElementValuePairs");
             super.addTable("elementValuePairs", ElementValuePair.class);
         }
@@ -42,7 +42,8 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
         
         @Override
         protected void afterRead(ClassReader reader) {
-            //setDesc(reader.getConstantPool().getUtf8String(typeIndex));
+            int typeIndex = ((U2) super.get("typeIndex")).getValue();
+            setDesc(reader.getConstantPool().getUtf8String(typeIndex));
         }
         
     }
@@ -140,13 +141,9 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
     
     public static class EnumConstValue extends ClassComponent {
 
-        private U2CpIndex typeNameIndex;
-        private U2CpIndex constNameIndex;
-        
-        @Override
-        protected void readContent(ClassReader reader) {
-            typeNameIndex = reader.readU2CpIndex();
-            constNameIndex = reader.readU2CpIndex();
+        {
+            super.addU2CpIndex("typeNameIndex");
+            super.addU2CpIndex("constNameIndex");
         }
         
     }

@@ -4,7 +4,6 @@ import com.github.zxh.classpy.classfile.AccessFlags;
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.datatype.U2;
-import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 
 /*
 InnerClasses_attribute {
@@ -29,15 +28,16 @@ public class InnerClassesAttribute extends AttributeInfo {
     public static class InnerClassInfo extends ClassComponent {
 
         {
-            super.add("innerClassInfoIndex", new U2CpIndex());
-            super.add("outerClassInfoIndex", new U2CpIndex());
-            super.add("innerNameIndex", new U2CpIndex());
-            super.add("innerClassAccessFlags", new U2());
+            super.addU2CpIndex("innerClassInfoIndex");
+            super.addU2CpIndex("outerClassInfoIndex");
+            super.addU2CpIndex("innerNameIndex");
+            super.addU2("innerClassAccessFlags");
         }
 
         @Override
         protected void afterRead(ClassReader reader) {
-            AccessFlags.describeInnerClassFlags((U2) super.get("innerClassAccessFlags"));
+            AccessFlags.describeInnerClassFlags(
+                    (U2) super.get("innerClassAccessFlags"));
         }
         
     }

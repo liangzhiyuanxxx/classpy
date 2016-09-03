@@ -1,7 +1,5 @@
 package com.github.zxh.classpy.classfile.attribute;
 
-import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
-
 /*
 EnclosingMethod_attribute {
     u2 attribute_name_index;
@@ -13,8 +11,8 @@ EnclosingMethod_attribute {
 public class EnclosingMethodAttribute extends AttributeInfo {
 
     {
-        super.add("classIndex", new U2CpIndex());
-        super.add("methodIndex", new U2CpIndex());
+        super.addU2CpIndex("classIndex");
+        super.addU2CpIndex("methodIndex");
     }
 
 }
