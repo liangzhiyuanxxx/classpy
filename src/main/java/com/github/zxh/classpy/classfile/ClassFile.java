@@ -1,9 +1,10 @@
 package com.github.zxh.classpy.classfile;
 
-import com.github.zxh.classpy.classfile.datatype.U2;
-import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 import com.github.zxh.classpy.classfile.attribute.AttributeInfo;
 import com.github.zxh.classpy.classfile.constant.ConstantPool;
+import com.github.zxh.classpy.classfile.datatype.U2;
+import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
+import com.github.zxh.classpy.classfile.reader.ClassReader;
 
 /*
 ClassFile {
@@ -47,5 +48,11 @@ public class ClassFile extends ClassComponent {
         u2   ("attributes_count");
         table("attributes", AttributeInfo.class);
     }
-    
+
+    @Override
+    protected void afterRead(ClassReader reader) {
+        AccessFlags.describeClassFlags(
+                (U2) super.get("access_flags"));
+    }
+
 }

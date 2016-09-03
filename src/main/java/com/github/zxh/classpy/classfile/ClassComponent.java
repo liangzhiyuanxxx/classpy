@@ -1,5 +1,6 @@
 package com.github.zxh.classpy.classfile;
 
+import com.github.zxh.classpy.classfile.constant.ConstantPool;
 import com.github.zxh.classpy.classfile.datatype.*;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
 
@@ -44,6 +45,10 @@ public abstract class ClassComponent {
             }
         }
         return null;
+    }
+
+    protected int getUInt(String name) {
+        return ((UInt) get(name)).getValue();
     }
 
     protected final void u1(String name) {
@@ -109,6 +114,10 @@ public abstract class ClassComponent {
     }
 
     protected void afterRead(ClassReader reader) {
+        afterRead(reader.getConstantPool());
+    }
+
+    protected void afterRead(ConstantPool cp) {
 
     }
 

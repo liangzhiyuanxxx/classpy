@@ -1,9 +1,8 @@
 package com.github.zxh.classpy.classfile;
 
-import com.github.zxh.classpy.classfile.reader.ClassReader;
-import com.github.zxh.classpy.classfile.datatype.U2;
-import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 import com.github.zxh.classpy.classfile.attribute.AttributeInfo;
+import com.github.zxh.classpy.classfile.constant.ConstantPool;
+import com.github.zxh.classpy.classfile.datatype.U2;
 
 /*
 field_info {
@@ -17,28 +16,23 @@ field_info {
 public class FieldInfo extends ClassComponent {
 
     {
-        add("accessFlags", new U2());
-        add("nameIndex", new U2CpIndex());
-        add("descriptorIndex", new U2CpIndex());
-        u2("attributesCount");
+        u2   ("access_flags");
+        u2cp ("name_index");
+        u2cp ("descriptor_index");
+        u2   ("attributes_count");
         table("attributes", AttributeInfo.class);
     }
 
     @Override
-    protected void readContent(ClassReader reader) {
-        super.readContent(reader);
-
-        int nameIndex = ((U2CpIndex) super.get("nameIndex")).getValue();
+    protected void afterRead(ConstantPool cp) {
+        int nameIndex = super.getUInt("name_index");
         if (nameIndex > 0) {
             // todo fix loading java.lang.String from rt.jar
-            setDesc(reader.getConstantPool().getUtf8String(nameIndex));
+            setDesc(cp.getUtf8String(nameIndex));
         }
 
-        describe((U2) super.get("accessFlags"));
-    }
-    
-    protected void describe(U2 accessFlags) {
-        AccessFlags.describeFieldFlags(accessFlags);
+        AccessFlags.describeFieldFlags(
+                (U2) super.get("access_flags"));
     }
     
 }
