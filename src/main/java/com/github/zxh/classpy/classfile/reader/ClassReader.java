@@ -4,12 +4,10 @@ import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.ClassParseException;
 import com.github.zxh.classpy.classfile.datatype.U1;
 import com.github.zxh.classpy.classfile.datatype.U2;
-import com.github.zxh.classpy.classfile.datatype.U4;
 import com.github.zxh.classpy.classfile.datatype.U1CpIndex;
-import com.github.zxh.classpy.classfile.datatype.U4Hex;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 import com.github.zxh.classpy.classfile.constant.ConstantPool;
-import com.github.zxh.classpy.classfile.datatype.U4Float;
+
 import java.nio.ByteOrder;
 import java.util.function.Supplier;
 
@@ -52,18 +50,6 @@ public class ClassReader extends BytesReader {
     
     public U2CpIndex readU2CpIndex() {
         return readCC(U2CpIndex::new);
-    }
-    
-    public U4 readU4() {
-        return readCC(U4::new);
-    }
-    
-    public U4Float readU4Float() {
-        return readCC(U4Float::new);
-    }
-    
-    public U4Hex readU4Hex() {
-        return readCC(U4Hex::new);
     }
 
 }
