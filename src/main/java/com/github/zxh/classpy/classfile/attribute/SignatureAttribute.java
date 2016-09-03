@@ -12,7 +12,7 @@ Signature_attribute {
 public class SignatureAttribute extends AttributeInfo {
 
     {
-        super.addSubComponent("signatureIndex", new U2CpIndex());
+        super.add("signatureIndex", new U2CpIndex());
     }
     
 }

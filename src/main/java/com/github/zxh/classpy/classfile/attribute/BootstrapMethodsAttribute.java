@@ -26,7 +26,7 @@ public class BootstrapMethodsAttribute extends AttributeInfo {
     public static class BootstrapMethodInfo extends ClassComponent {
 
         {
-            super.addSubComponent("bootstrapMethodRef", new U2CpIndex());
+            super.add("bootstrapMethodRef", new U2CpIndex());
             U2 n = super.addU2("numBootstrapArguments");
             super.addTable("bootstrapArguments", n, U2CpIndex.class);
         }

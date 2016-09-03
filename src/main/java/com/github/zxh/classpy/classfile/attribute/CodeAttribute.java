@@ -26,10 +26,10 @@ Code_attribute {
 public class CodeAttribute extends AttributeInfo {
 
     {
-        super.addSubComponent("maxStack", new U2());
-        super.addSubComponent("maxLocals", new U2());
+        super.add("maxStack", new U2());
+        super.add("maxLocals", new U2());
         U4 codeLength = super.addU4("codeLength");
-        super.addSubComponent("code", new Code(codeLength));
+        super.add("code", new Code(codeLength));
         U2 exceptionTableLength = super.addU2("exceptionTableLength");
         super.addTable("exceptionTable", exceptionTableLength, ExceptionTableEntry.class);
         U2 attributesCount = super.addU2("attributesCount");
@@ -40,10 +40,10 @@ public class CodeAttribute extends AttributeInfo {
     public static class ExceptionTableEntry extends ClassComponent {
 
         {
-            super.addSubComponent("startPc", new U2());
-            super.addSubComponent("endPc", new U2());
-            super.addSubComponent("handlerPc", new U2());
-            super.addSubComponent("catchType", new U2CpIndex());
+            super.add("startPc", new U2());
+            super.add("endPc", new U2());
+            super.add("handlerPc", new U2());
+            super.add("catchType", new U2CpIndex());
         }
 
     }

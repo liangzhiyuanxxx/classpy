@@ -29,49 +29,49 @@ public abstract class ClassComponent {
     public List<ClassComponent> getSubComponents() {
         return subComponents == null
                 ? Collections.EMPTY_LIST
-                : subComponents;
+                : Collections.unmodifiableList(subComponents);
     }
 
     protected ClassComponent getSubComponent(int index) {
         return subComponents.get(index);
     }
 
-    protected void addSubComponent(ClassComponent c) {
-        this.addSubComponent(null, c);
-    }
-
     protected U1 addU1(String name) {
         U1 u1 = new U1();
-        this.addSubComponent(name, u1);
+        this.add(name, u1);
         return u1;
     }
 
     protected U2 addU2(String name) {
         U2 u2 = new U2();
-        this.addSubComponent(name, u2);
+        this.add(name, u2);
         return u2;
     }
 
     protected U4 addU4(String name) {
         U4 u4 = new U4();
-        this.addSubComponent(name, u4);
+        this.add(name, u4);
         return u4;
     }
 
     protected void addTable(String name, UInt length,
                             Class<? extends ClassComponent> entryClass) {
-        Table table = new Table(entryClass, length);
-        this.addSubComponent(name, table);
+        Table table = new Table(length, entryClass);
+        this.add(name, table);
     }
 
-    protected void addSubComponent(String name, ClassComponent c) {
+    protected void add(ClassComponent subComponent) {
+        this.add(null, subComponent);
+    }
+
+    protected void add(String name, ClassComponent subComponent) {
         if (name != null) {
-            c.setName(name);
+            subComponent.setName(name);
         }
         if (subComponents == null) {
             subComponents = new ArrayList<>();
         }
-        subComponents.add(c);
+        subComponents.add(subComponent);
     }
 
     /**

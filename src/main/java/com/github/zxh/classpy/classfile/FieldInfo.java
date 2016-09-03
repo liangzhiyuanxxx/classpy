@@ -17,9 +17,9 @@ field_info {
 public class FieldInfo extends ClassComponent {
 
     {
-        super.addSubComponent("accessFlags", new U2());
-        super.addSubComponent("nameIndex", new U2CpIndex());
-        super.addSubComponent("descriptorIndex", new U2CpIndex());
+        super.add("accessFlags", new U2());
+        super.add("nameIndex", new U2CpIndex());
+        super.add("descriptorIndex", new U2CpIndex());
         U2 attributesCount = super.addU2("attributesCount");
         super.addTable("attributes", attributesCount, AttributeInfo.class);
     }

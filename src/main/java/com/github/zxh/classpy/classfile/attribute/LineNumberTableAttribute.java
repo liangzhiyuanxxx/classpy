@@ -33,8 +33,8 @@ public class LineNumberTableAttribute extends AttributeInfo {
     public static class LineNumberTableEntry extends ClassComponent {
 
         {
-            super.addSubComponent("startPc", new U2());
-            super.addSubComponent("lineNumber", new U2());
+            super.add("startPc", new U2());
+            super.add("lineNumber", new U2());
         }
 
     }

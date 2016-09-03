@@ -34,7 +34,7 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
     public static class AnnotationInfo extends ClassComponent {
 
         {
-            super.addSubComponent("typeIndex", new U2CpIndex());
+            super.add("typeIndex", new U2CpIndex());
             U2 n = super.addU2("numElementValuePairs");
             super.addTable("elementValuePairs", n, ElementValuePair.class);
         }

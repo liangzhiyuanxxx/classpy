@@ -31,8 +31,8 @@ public class LocalVariableTypeTableAttribute extends AttributeInfo {
         {
             super.addU2("startPc");
             super.addU2("length");
-            super.addSubComponent("nameIndex", new U2CpIndex());
-            super.addSubComponent("signatureIndex", new U2CpIndex());
+            super.add("nameIndex", new U2CpIndex());
+            super.add("signatureIndex", new U2CpIndex());
             super.addU2("index");
         }
 

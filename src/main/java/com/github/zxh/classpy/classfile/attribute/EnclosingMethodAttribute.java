@@ -13,8 +13,8 @@ EnclosingMethod_attribute {
 public class EnclosingMethodAttribute extends AttributeInfo {
 
     {
-        super.addSubComponent("classIndex", new U2CpIndex());
-        super.addSubComponent("methodIndex", new U2CpIndex());
+        super.add("classIndex", new U2CpIndex());
+        super.add("methodIndex", new U2CpIndex());
     }
 
 }

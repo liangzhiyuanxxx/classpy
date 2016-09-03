@@ -12,7 +12,7 @@ AnnotationDefault_attribute {
 public class AnnotationDefaultAttribute extends AttributeInfo {
 
     {
-        super.addSubComponent("defaultValue", new ElementValue());
+        super.add("defaultValue", new ElementValue());
     }
 
 }

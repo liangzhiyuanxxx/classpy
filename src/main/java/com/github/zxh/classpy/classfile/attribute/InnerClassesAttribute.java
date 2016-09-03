@@ -29,10 +29,10 @@ public class InnerClassesAttribute extends AttributeInfo {
     public static class InnerClassInfo extends ClassComponent {
 
         {
-            super.addSubComponent("innerClassInfoIndex", new U2CpIndex());
-            super.addSubComponent("outerClassInfoIndex", new U2CpIndex());
-            super.addSubComponent("innerNameIndex", new U2CpIndex());
-            super.addSubComponent("innerClassAccessFlags", new U2());
+            super.add("innerClassInfoIndex", new U2CpIndex());
+            super.add("outerClassInfoIndex", new U2CpIndex());
+            super.add("innerNameIndex", new U2CpIndex());
+            super.add("innerClassAccessFlags", new U2());
         }
 
         @Override

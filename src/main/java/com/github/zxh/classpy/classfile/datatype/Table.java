@@ -11,12 +11,12 @@ import com.github.zxh.classpy.classfile.attribute.AttributeInfo;
  */
 public class Table extends ClassComponent {
 
-    private final Class<? extends ClassComponent> entryClass;
     private final UInt length;
+    private final Class<? extends ClassComponent> entryClass;
 
-    public Table(Class<? extends ClassComponent> entryClass, UInt length) {
-        this.entryClass = entryClass;
+    public Table(UInt length, Class<? extends ClassComponent> entryClass) {
         this.length = length;
+        this.entryClass = entryClass;
     }
     
     @Override
@@ -24,7 +24,7 @@ public class Table extends ClassComponent {
         try {
             for (int i = 0; i < length.getValue(); i++) {
                 ClassComponent c = readEntry(reader);
-                super.addSubComponent(c);
+                super.add(c);
             }
         } catch (ReflectiveOperationException e) {
             throw new ClassParseException(e);
