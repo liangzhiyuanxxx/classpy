@@ -2,6 +2,7 @@ package com.github.zxh.classpy.classfile.datatype;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.ClassParseException;
+import com.github.zxh.classpy.classfile.attribute.AttributeFactory;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.helper.StringUtil;
 import com.github.zxh.classpy.classfile.attribute.AttributeInfo;
@@ -45,7 +46,7 @@ public class Table extends ClassComponent {
         int attrNameIndex = reader.getByteBuffer().getShort(reader.getPosition());
         String attrName = reader.getConstantPool().getUtf8String(attrNameIndex);
         
-        AttributeInfo attr = AttributeInfo.create(attrName);
+        AttributeInfo attr = AttributeFactory.create(attrName);
         attr.setName(attrName);
         attr.read(reader);
         
