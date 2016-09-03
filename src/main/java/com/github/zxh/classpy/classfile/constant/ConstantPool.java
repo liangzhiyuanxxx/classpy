@@ -45,7 +45,7 @@ public class ConstantPool extends ClassComponent {
     private ConstantInfo readConstantInfo(ClassReader reader) {
         byte tag = reader.getByteBuffer().get(reader.getPosition());
         
-        ConstantInfo ci = ConstantInfo.create(tag);
+        ConstantInfo ci = ConstantFactory.create(tag);
         ci.read(reader);
         
         return ci;
