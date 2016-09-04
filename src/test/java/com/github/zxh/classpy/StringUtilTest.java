@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
  * 
  * @author zxh
  */
-public class UtilTest {
+public class StringUtilTest {
     
     @Test
     public void cutAndAppendEllipsis() {
