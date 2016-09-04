@@ -1,7 +1,7 @@
 package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
-import com.github.zxh.classpy.classfile.reader.ClassReader;
+import com.github.zxh.classpy.classfile.constant.ConstantPool;
 import com.github.zxh.classpy.classfile.datatype.U2;
 
 /*
@@ -30,7 +30,7 @@ public class LineNumberTableAttribute extends AttributeInfo {
         }
 
         @Override
-        protected void afterRead(ClassReader reader) {
+        protected void afterRead(ConstantPool cp) {
             int lineNumber = ((U2) super.get("lineNumber")).getValue();
             int startPc = ((U2) super.get("startPc")).getValue();
             setName("line " + lineNumber);

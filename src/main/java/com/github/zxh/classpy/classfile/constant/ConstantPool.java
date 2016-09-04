@@ -40,6 +40,7 @@ public class ConstantPool extends ClassComponent {
             }
         }
         loadConstantDesc();
+        reader.setConstantPool(this);
     }
     
     private ConstantInfo readConstantInfo(ClassReader reader) {

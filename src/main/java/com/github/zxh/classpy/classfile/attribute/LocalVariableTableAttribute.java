@@ -1,6 +1,7 @@
 package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
+import com.github.zxh.classpy.classfile.constant.ConstantPool;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.datatype.U2;
 
@@ -36,14 +37,14 @@ public class LocalVariableTableAttribute extends AttributeInfo {
         }
 
         @Override
-        protected void afterRead(ClassReader reader) {
+        protected void afterRead(ConstantPool cp) {
             int startPc = ((U2) super.get("startPc")).getValue();
             int length = ((U2) super.get("length")).getValue();
             int nameIndex = ((U2) super.get("nameIndex")).getValue();
 
             int fromPc = startPc;
             int toPc = fromPc + length - 1;
-            String varName = reader.getConstantPool().getConstantDesc(nameIndex);
+            String varName = cp.getConstantDesc(nameIndex);
             setDesc(String.format("%s(%d~%d)", varName, fromPc, toPc));
         }
         

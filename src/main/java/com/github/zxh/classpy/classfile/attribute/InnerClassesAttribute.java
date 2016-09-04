@@ -2,7 +2,7 @@ package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.AccessFlags;
 import com.github.zxh.classpy.classfile.ClassComponent;
-import com.github.zxh.classpy.classfile.reader.ClassReader;
+import com.github.zxh.classpy.classfile.constant.ConstantPool;
 import com.github.zxh.classpy.classfile.datatype.U2;
 
 /*
@@ -35,7 +35,7 @@ public class InnerClassesAttribute extends AttributeInfo {
         }
 
         @Override
-        protected void afterRead(ClassReader reader) {
+        protected void afterRead(ConstantPool cp) {
             AccessFlags.describeInnerClassFlags(
                     (U2) super.get("innerClassAccessFlags"));
         }

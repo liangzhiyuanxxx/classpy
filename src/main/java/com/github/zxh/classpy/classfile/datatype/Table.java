@@ -3,6 +3,7 @@ package com.github.zxh.classpy.classfile.datatype;
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.ClassParseException;
 import com.github.zxh.classpy.classfile.attribute.AttributeFactory;
+import com.github.zxh.classpy.classfile.constant.ConstantPool;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.helper.StringUtil;
 import com.github.zxh.classpy.classfile.attribute.AttributeInfo;
@@ -53,7 +54,7 @@ public class Table extends ClassComponent {
     }
 
     @Override
-    protected void afterRead(ClassReader reader) {
+    protected void afterRead(ConstantPool cp) {
         int i = 0;
         for (ClassComponent entry : super.getSubComponents()) {
             String newName = StringUtil.formatIndex(length.getValue(), i++);

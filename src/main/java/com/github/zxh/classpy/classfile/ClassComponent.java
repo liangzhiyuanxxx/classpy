@@ -100,7 +100,6 @@ public abstract class ClassComponent {
         offset = reader.getPosition();
         readContent(reader);
         length = reader.getPosition() - offset;
-        afterRead(reader);
     }
     
     /**
@@ -111,10 +110,6 @@ public abstract class ClassComponent {
         for (ClassComponent cc : subComponents) {
             cc.read(reader);
         }
-    }
-
-    protected void afterRead(ClassReader reader) {
-        afterRead(reader.getConstantPool());
     }
 
     protected void afterRead(ConstantPool cp) {

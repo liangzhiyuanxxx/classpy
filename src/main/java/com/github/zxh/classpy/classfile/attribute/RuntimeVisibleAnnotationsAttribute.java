@@ -2,6 +2,7 @@ package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.ClassParseException;
+import com.github.zxh.classpy.classfile.constant.ConstantPool;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.datatype.U1;
 import com.github.zxh.classpy.classfile.datatype.U2;
@@ -41,9 +42,9 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
 
         
         @Override
-        protected void afterRead(ClassReader reader) {
+        protected void afterRead(ConstantPool cp) {
             int typeIndex = ((U2) super.get("typeIndex")).getValue();
-            setDesc(reader.getConstantPool().getUtf8String(typeIndex));
+            setDesc(cp.getUtf8String(typeIndex));
         }
         
     }
@@ -58,7 +59,12 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
             elementNameIndex = reader.readU2CpIndex();
             value = new ElementValue();
             value.read(reader);
-            setDesc(reader.getConstantPool().getUtf8String(elementNameIndex));
+
+        }
+
+        @Override
+        protected void afterRead(ConstantPool cp) {
+            setDesc(cp.getUtf8String(elementNameIndex));
         }
         
     }

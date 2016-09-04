@@ -4,7 +4,6 @@ import com.github.zxh.classpy.classfile.attribute.AttributeInfo;
 import com.github.zxh.classpy.classfile.constant.ConstantPool;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
-import com.github.zxh.classpy.classfile.reader.ClassReader;
 
 /*
 ClassFile {
@@ -49,8 +48,12 @@ public class ClassFile extends ClassComponent {
         table("attributes", AttributeInfo.class);
     }
 
+    public ConstantPool getConstantPool() {
+        return (ConstantPool) super.get("constant_pool");
+    }
+
     @Override
-    protected void afterRead(ClassReader reader) {
+    protected void afterRead(ConstantPool cp) {
         AccessFlags.describeClassFlags(
                 (U2) super.get("access_flags"));
     }

@@ -1,12 +1,11 @@
 package com.github.zxh.classpy.classfile.reader;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
-import com.github.zxh.classpy.classfile.ClassParseException;
+import com.github.zxh.classpy.classfile.constant.ConstantPool;
 import com.github.zxh.classpy.classfile.datatype.U1;
 import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U1CpIndex;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
-import com.github.zxh.classpy.classfile.constant.ConstantPool;
 
 import java.nio.ByteOrder;
 import java.util.function.Supplier;
@@ -17,19 +16,19 @@ import java.util.function.Supplier;
 public class ClassReader extends BytesReader {
 
     private ConstantPool constantPool;
-    
+
     public ClassReader(byte[] bytes) {
         super(bytes, ByteOrder.BIG_ENDIAN, true);
     }
-    
+
     public ConstantPool getConstantPool() {
-        if (constantPool == null) {
-            throw new ClassParseException("ConstantPool is not ready!");
-        } else {
-            return constantPool;
-        }
+        return constantPool;
     }
-    
+
+    public void setConstantPool(ConstantPool constantPool) {
+        this.constantPool = constantPool;
+    }
+
     private <T extends ClassComponent> T readCC(Supplier<T> factory) {
         T cc = factory.get();
         cc.read(this);
