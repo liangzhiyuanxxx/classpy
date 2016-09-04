@@ -113,8 +113,10 @@ public abstract class ClassComponent {
      * @param reader 
      */
     protected void readContent(ClassReader reader) {
-        for (ClassComponent cc : subComponents) {
-            cc.read(reader);
+        if (subComponents != null) {
+            for (ClassComponent cc : subComponents) {
+                cc.read(reader);
+            }
         }
     }
 
