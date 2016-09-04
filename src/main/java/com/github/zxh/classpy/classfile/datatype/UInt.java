@@ -3,11 +3,10 @@ package com.github.zxh.classpy.classfile.datatype;
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
 
-public abstract class UInt extends ClassComponent implements IntValue {
+public abstract class UInt extends ClassComponent {
 
     private int value;
     
-    @Override
     public final int getValue() {
         return value;
     }

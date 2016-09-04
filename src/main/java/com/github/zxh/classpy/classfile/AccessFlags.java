@@ -1,6 +1,7 @@
 package com.github.zxh.classpy.classfile;
 
-import com.github.zxh.classpy.classfile.datatype.IntValue;
+import com.github.zxh.classpy.classfile.datatype.U2;
+
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -46,23 +47,23 @@ public class AccessFlags {
         
     }
     
-    public static <T extends ClassComponent & IntValue> void describeClassFlags(T flags) {
+    public static void describeClassFlags(U2 flags) {
         flags.setDesc(describe(AF_CLASS, flags.getValue()));
     }
     
-    public static <T extends ClassComponent & IntValue> void describeFieldFlags(T flags) {
+    public static void describeFieldFlags(U2 flags) {
         flags.setDesc(describe(AF_FIELD, flags.getValue()));
     }
     
-    public static <T extends ClassComponent & IntValue> void describeMethodFlags(T flags) {
+    public static void describeMethodFlags(U2 flags) {
         flags.setDesc(describe(AF_METHOD, flags.getValue()));
     }
     
-    public static <T extends ClassComponent & IntValue> void describeInnerClassFlags(T flags) {
+    public static void describeInnerClassFlags(U2 flags) {
         flags.setDesc(describe(AF_NESTED_CLASS, flags.getValue()));
     }
     
-    public static <T extends ClassComponent & IntValue> void describeClassOrInnerClassFlags(T flags) {
+    public static void describeClassOrInnerClassFlags(U2 flags) {
         flags.setDesc(describe(AF_CLASS | AF_NESTED_CLASS, flags.getValue()));
     }
     
