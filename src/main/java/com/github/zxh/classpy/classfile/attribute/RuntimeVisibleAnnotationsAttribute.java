@@ -50,20 +50,15 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
     }
     
     public static class ElementValuePair extends ClassComponent {
-        
-        private U2CpIndex elementNameIndex;
-        private ElementValue value;
-        
-        @Override
-        protected void readContent(ClassReader reader) {
-            elementNameIndex = reader.readU2CpIndex();
-            value = new ElementValue();
-            value.read(reader);
 
+        {
+            u2cp("element_name_index");
+            add ("value", new ElementValue());
         }
 
         @Override
         protected void afterRead(ConstantPool cp) {
+            int elementNameIndex = super.getUInt("element_name_index");
             setDesc(cp.getUtf8String(elementNameIndex));
         }
         

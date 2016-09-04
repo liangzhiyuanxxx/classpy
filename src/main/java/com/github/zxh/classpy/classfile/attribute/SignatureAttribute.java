@@ -1,7 +1,5 @@
 package com.github.zxh.classpy.classfile.attribute;
 
-import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
-
 /*
 Signature_attribute {
     u2 attribute_name_index;
@@ -12,7 +10,7 @@ Signature_attribute {
 public class SignatureAttribute extends AttributeInfo {
 
     {
-        add("signature_index", new U2CpIndex());
+        u2cp("signature_index");
     }
     
 }

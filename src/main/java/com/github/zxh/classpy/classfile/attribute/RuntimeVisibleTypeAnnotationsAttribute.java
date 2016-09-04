@@ -2,9 +2,9 @@ package com.github.zxh.classpy.classfile.attribute;
 
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.ClassParseException;
+import com.github.zxh.classpy.classfile.constant.ConstantPool;
 import com.github.zxh.classpy.classfile.reader.ClassReader;
 import com.github.zxh.classpy.classfile.datatype.U1;
-import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.attribute.RuntimeVisibleAnnotationsAttribute.AnnotationInfo;
 import com.github.zxh.classpy.classfile.helper.StringUtil;
 
@@ -49,21 +49,19 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
     */
     public static class TypeAnnotationInfo extends ClassComponent {
 
-        private U1 targetType;
-        private TargetInfo targetInfo;
-        private TypePath targetPath;
-        private AnnotationInfo annotation;
-        
+        {
+            U1 targetType = new U1();
+
+            add("target_type", targetType);
+            add("target_info", new TargetInfo(targetType));
+            add("target_path", new TypePath());
+            add("annotation", new AnnotationInfo());
+        }
+
         @Override
-        protected void readContent(ClassReader reader) {
-            targetType = reader.readU1();
+        protected void afterRead(ConstantPool cp) {
+            U1 targetType = (U1) super.get("target_type");
             targetType.setDesc(StringUtil.toHexString(targetType.getValue()));
-            targetInfo = new TargetInfo(targetType.getValue());
-            targetInfo.read(reader);
-            targetPath = new TypePath();
-            targetPath.read(reader);
-            annotation = new AnnotationInfo();
-            annotation.read(reader);
         }
     
     }
@@ -107,7 +105,7 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
     */
     public static class TargetInfo extends ClassComponent {
 
-        private final int targetType;
+        private final U1 targetType;
 //        private U1 typeParameterIndex; // type_parameter_target & type_parameter_bound_target
 //        private U2 supertypeIndex; // supertype_target
 //        private U1 boundIndex; // type_parameter_bound_target
@@ -119,13 +117,13 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
 //        private U2 offset; // offset_target & type_argument_target
 //        private U1 typeArgumentIndex; // type_argument_target
 
-        public TargetInfo(int targetType) {
+        public TargetInfo(U1 targetType) {
             this.targetType = targetType;
         }
         
         @Override
         protected void readContent(ClassReader reader) {
-            switch (targetType) {
+            switch (targetType.getValue()) {
                 case 0x00:
                 case 0x01:
                     u1("typeParameterIndex");
@@ -178,16 +176,11 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
     }
     
     public static class LocalVarInfo extends ClassComponent {
-        
-        private U2 startPc;
-        private U2 length;
-        private U2 index;
-        
-        @Override
-        protected void readContent(ClassReader reader) {
-            startPc = reader.readU2();
-            length = reader.readU2();
-            index = reader.readU2();
+
+        {
+            u2("start_pc");
+            u2("length");
+            u2("index");
         }
         
     }
@@ -211,13 +204,9 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
     
     public static class PathInfo extends ClassComponent {
 
-        private U1 typePathKind;
-        private U1 typeArgumentIndex;
-        
-        @Override
-        protected void readContent(ClassReader reader) {
-            typePathKind = reader.readU1();
-            typeArgumentIndex = reader.readU1();
+        {
+            u1("type_path_kind");
+            u1("type_argument_index");
         }
         
     }

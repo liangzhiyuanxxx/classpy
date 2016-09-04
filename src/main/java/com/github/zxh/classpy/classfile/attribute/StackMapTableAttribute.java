@@ -23,14 +23,4 @@ public class StackMapTableAttribute extends AttributeInfo {
         reader.skipBytes(super.getAttributeLength() - 2);
     }
 
-
-//    public static class StackMapFrame extends ClassComponent {
-//
-//        @Override
-//        protected void readContent(ClassReader reader) {
-//            // todo
-//        }
-//
-//    }
-    
 }

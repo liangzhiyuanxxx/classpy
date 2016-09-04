@@ -1,7 +1,5 @@
 package com.github.zxh.classpy.classfile.attribute;
 
-import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
-
 /*
 SourceFile_attribute {
     u2 attribute_name_index;
@@ -12,7 +10,7 @@ SourceFile_attribute {
 public class SourceFileAttribute extends AttributeInfo {
 
     {
-        add("source_file_index", new U2CpIndex());
+        u2cp("source_file_index");
     }
 
 }
