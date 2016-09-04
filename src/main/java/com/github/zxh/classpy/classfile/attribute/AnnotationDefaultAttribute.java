@@ -12,7 +12,7 @@ AnnotationDefault_attribute {
 public class AnnotationDefaultAttribute extends AttributeInfo {
 
     {
-        add("defaultValue", new ElementValue());
+        add("default_value", new ElementValue());
     }
 
 }

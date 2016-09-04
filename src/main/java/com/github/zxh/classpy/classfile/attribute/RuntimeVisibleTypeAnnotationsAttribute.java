@@ -19,7 +19,7 @@ RuntimeVisibleTypeAnnotations_attribute {
 public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
 
     {
-        u2("numAnnotations");
+        u2   ("num_annotations");
         table("annotations", TypeAnnotationInfo.class);
     }
     
@@ -203,7 +203,7 @@ public class RuntimeVisibleTypeAnnotationsAttribute extends AttributeInfo {
     public static class TypePath extends ClassComponent {
 
         {
-            u1("pathLength");
+            u1   ("path_length");
             table("path", PathInfo.class);
         }
         

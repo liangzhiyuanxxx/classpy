@@ -17,17 +17,17 @@ BootstrapMethods_attribute {
 public class BootstrapMethodsAttribute extends AttributeInfo {
 
     {
-        u2("numBootstrapMethods");
-        table("bootstrapMethods", BootstrapMethodInfo.class);
+        u2   ("num_bootstrap_methods");
+        table("bootstrap_methods", BootstrapMethodInfo.class);
     }
 
     
     public static class BootstrapMethodInfo extends ClassComponent {
 
         {
-            u2cp("bootstrapMethodRef");
-            u2("numBootstrapArguments");
-            table("bootstrapArguments", U2CpIndex.class);
+            u2cp ("bootstrap_method_ref");
+            u2   ("num_bootstrap_arguments");
+            table("bootstrap_arguments", U2CpIndex.class);
         }
         
     }

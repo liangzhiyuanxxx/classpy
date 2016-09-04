@@ -1,7 +1,5 @@
 package com.github.zxh.classpy.classfile.attribute;
 
-import com.github.zxh.classpy.classfile.reader.ClassReader;
-
 /*
 attribute_info {
     u2 attribute_name_index;
@@ -11,10 +9,8 @@ attribute_info {
  */
 public class UndefinedAttribute extends AttributeInfo {
 
-    @Override
-    protected void readContent(ClassReader reader) {
-        super.readContent(reader);
-        reader.skipBytes(super.getAttributeLength());
+    {
+        bytes("info");
     }
     
 }

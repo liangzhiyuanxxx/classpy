@@ -15,7 +15,7 @@ MethodParameters_attribute {
 public class MethodParametersAttribute extends AttributeInfo {
 
     {
-        u1("parametersCount");
+        u1   ("parameters_count");
         table("parameters", ParameterInfo.class);
     }
 
@@ -23,8 +23,8 @@ public class MethodParametersAttribute extends AttributeInfo {
     public static class ParameterInfo extends ClassComponent {
 
         {
-            u2("nameIndex");
-            u2("accessFlags");
+            u2("name_index");
+            u2("access_flags");
         }
         
     }

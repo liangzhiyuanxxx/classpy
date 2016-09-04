@@ -20,7 +20,7 @@ InnerClasses_attribute {
 public class InnerClassesAttribute extends AttributeInfo {
 
     {
-        u2("numberOfClasses");
+        u2   ("number_of_classes");
         table("classes", InnerClassInfo.class);
     }
     
@@ -28,16 +28,16 @@ public class InnerClassesAttribute extends AttributeInfo {
     public static class InnerClassInfo extends ClassComponent {
 
         {
-            u2cp("innerClassInfoIndex");
-            u2cp("outerClassInfoIndex");
-            u2cp("innerNameIndex");
-            u2("innerClassAccessFlags");
+            u2cp("inner_class_info_index");
+            u2cp("outer_class_info_index");
+            u2cp("inner_name_index");
+            u2  ("inner_class_access_flags");
         }
 
         @Override
         protected void afterRead(ConstantPool cp) {
             AccessFlags.describeInnerClassFlags(
-                    (U2) super.get("innerClassAccessFlags"));
+                    (U2) super.get("inner_class_access_flags"));
         }
         
     }

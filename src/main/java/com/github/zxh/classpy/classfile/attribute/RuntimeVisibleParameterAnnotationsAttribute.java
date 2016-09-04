@@ -18,15 +18,15 @@ RuntimeVisibleParameterAnnotations_attribute {
 public class RuntimeVisibleParameterAnnotationsAttribute extends AttributeInfo {
 
     {
-        u1("numParameters");
-        table("parameterAnnotations", ParameterAnnotationInfo.class);
+        u1   ("num_parameters");
+        table("parameter_annotations", ParameterAnnotationInfo.class);
     }
     
     
     public static class ParameterAnnotationInfo extends ClassComponent {
 
         {
-            u2("numAnnotations");
+            u2   ("num_annotations");
             table("annotations", AnnotationInfo.class);
         }
         

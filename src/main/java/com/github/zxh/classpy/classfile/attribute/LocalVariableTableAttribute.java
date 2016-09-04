@@ -21,26 +21,26 @@ LocalVariableTable_attribute {
 public class LocalVariableTableAttribute extends AttributeInfo {
 
     {
-        u2("localVariableTableLength");
-        table("localVariableTable", LocalVariableTableEntry.class);
+        u2   ("local_variable_table_length");
+        table("local_variable_table", LocalVariableTableEntry.class);
     }
 
     
     public static class LocalVariableTableEntry extends ClassComponent {
 
         {
-            u2("startPc");
-            u2("length");
-            u2cp("nameIndex");
-            u2cp("descriptorIndex");
-            u2("index");
+            u2  ("start_pc");
+            u2  ("length");
+            u2cp("name_index");
+            u2cp("descriptor_index");
+            u2  ("index");
         }
 
         @Override
         protected void afterRead(ConstantPool cp) {
-            int startPc = ((U2) super.get("startPc")).getValue();
+            int startPc = ((U2) super.get("start_pc")).getValue();
             int length = ((U2) super.get("length")).getValue();
-            int nameIndex = ((U2) super.get("nameIndex")).getValue();
+            int nameIndex = ((U2) super.get("name_index")).getValue();
 
             int fromPc = startPc;
             int toPc = fromPc + length - 1;

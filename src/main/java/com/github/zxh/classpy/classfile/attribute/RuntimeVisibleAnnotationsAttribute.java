@@ -19,7 +19,7 @@ RuntimeVisibleAnnotations_attribute {
 public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
 
     {
-        u2("numAnnotations");
+        u2   ("num_annotations");
         table("annotations", AnnotationInfo.class);
     }
     
@@ -35,15 +35,15 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
     public static class AnnotationInfo extends ClassComponent {
 
         {
-            u2cp("typeIndex");
-            u2("numElementValuePairs");
-            table("elementValuePairs", ElementValuePair.class);
+            u2cp ("type_index");
+            u2   ("num_element_value_pairs");
+            table("element_value_pairs", ElementValuePair.class);
         }
 
         
         @Override
         protected void afterRead(ConstantPool cp) {
-            int typeIndex = ((U2) super.get("typeIndex")).getValue();
+            int typeIndex = ((U2) super.get("type_index")).getValue();
             setDesc(cp.getUtf8String(typeIndex));
         }
         
@@ -148,8 +148,8 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
     public static class EnumConstValue extends ClassComponent {
 
         {
-            u2cp("typeNameIndex");
-            u2cp("constNameIndex");
+            u2cp("type_name_index");
+            u2cp("const_name_index");
         }
         
     }
@@ -157,7 +157,7 @@ public class RuntimeVisibleAnnotationsAttribute extends AttributeInfo {
     public static class ArrayValue extends  ClassComponent {
 
         {
-            u2("numValues");
+            u2   ("num_values");
             table("values", ElementValue.class);
         }
         

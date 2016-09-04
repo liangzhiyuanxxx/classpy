@@ -13,12 +13,12 @@ attribute_info {
 public abstract class AttributeInfo extends ClassComponent {
 
     {
-        u2("attributeNameIndex");
-        u4("attributeLength");
+        u2("attribute_name_index");
+        u4("attribute_length");
     }
 
     protected int getAttributeLength() {
-        return ((U4) super.get("attributeLength")).getValue();
+        return ((U4) super.get("attribute_length")).getValue();
     }
     
 }

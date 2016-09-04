@@ -12,7 +12,7 @@ Signature_attribute {
 public class SignatureAttribute extends AttributeInfo {
 
     {
-        add("signatureIndex", new U2CpIndex());
+        add("signature_index", new U2CpIndex());
     }
     
 }

@@ -20,24 +20,24 @@ LocalVariableTypeTable_attribute {
 public class LocalVariableTypeTableAttribute extends AttributeInfo {
 
     {
-        u2("localVariableTypeTableLength");
-        table("localVariableTypeTable", LocalVariableTypeTableEntry.class);
+        u2   ("local_variable_type_table_length");
+        table("local_variable_type_table", LocalVariableTypeTableEntry.class);
     }
 
 
     public static class LocalVariableTypeTableEntry extends ClassComponent {
 
         {
-            u2("startPc");
-            u2("length");
-            u2cp("nameIndex");
-            u2cp("signatureIndex");
-            u2("index");
+            u2  ("start_pc");
+            u2  ("length");
+            u2cp("name_index");
+            u2cp("signature_index");
+            u2  ("index");
         }
 
         @Override
         protected void afterRead(ConstantPool cp) {
-            int nameIndex = ((U2) super.get("nameIndex")).getValue();
+            int nameIndex = ((U2) super.get("name_index")).getValue();
             setDesc(cp.getUtf8String(nameIndex));
         }
     

@@ -1,7 +1,5 @@
 package com.github.zxh.classpy.classfile.attribute;
 
-import com.github.zxh.classpy.classfile.reader.ClassReader;
-
 /*
 SourceDebugExtension_attribute {
     u2 attribute_name_index;
@@ -11,11 +9,8 @@ SourceDebugExtension_attribute {
  */
 public class SourceDebugExtensionAttribute extends AttributeInfo {
 
-    @Override
-    protected void readContent(ClassReader reader) {
-        super.readContent(reader);
-        // todo
-        reader.skipBytes(super.getAttributeLength());
+    {
+        bytes("debug_extension");
     }
     
 }

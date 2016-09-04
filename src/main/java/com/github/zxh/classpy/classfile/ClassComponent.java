@@ -78,6 +78,12 @@ public abstract class ClassComponent {
         this.add(name, table);
     }
 
+    protected final void bytes(String name) {
+        UInt count = (UInt) subComponents.get(subComponents.size() - 1);
+        Bytes bytes = new Bytes(count);
+        this.add(name, bytes);
+    }
+
     protected final void add(ClassComponent subComponent) {
         this.add(null, subComponent);
     }

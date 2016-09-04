@@ -17,22 +17,22 @@ LineNumberTable_attribute {
 public class LineNumberTableAttribute extends AttributeInfo {
 
     {
-        u2("lineNumberTableLength");
-        table("lineNumberTable", LineNumberTableEntry.class);
+        u2   ("line_number_table_length");
+        table("line_number_table", LineNumberTableEntry.class);
     }
 
     
     public static class LineNumberTableEntry extends ClassComponent {
 
         {
-            u2("startPc");
-            u2("lineNumber");
+            u2("start_pc");
+            u2("line_number");
         }
 
         @Override
         protected void afterRead(ConstantPool cp) {
-            int lineNumber = ((U2) super.get("lineNumber")).getValue();
-            int startPc = ((U2) super.get("startPc")).getValue();
+            int lineNumber = ((U2) super.get("line_number")).getValue();
+            int startPc = ((U2) super.get("start_pc")).getValue();
             setName("line " + lineNumber);
             setDesc(Integer.toString(startPc));
         }
