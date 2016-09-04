@@ -75,11 +75,7 @@ public class ConstantPool extends ClassComponent {
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
-    
-    public String getUtf8String(U2 index) {
-        return getUtf8String(index.getValue());
-    }
-    
+
     public String getUtf8String(int index) {
         return getConstant(ConstantUtf8Info.class, index).getString();
     }

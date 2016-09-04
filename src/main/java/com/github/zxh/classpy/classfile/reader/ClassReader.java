@@ -3,7 +3,6 @@ package com.github.zxh.classpy.classfile.reader;
 import com.github.zxh.classpy.classfile.ClassComponent;
 import com.github.zxh.classpy.classfile.constant.ConstantPool;
 import com.github.zxh.classpy.classfile.datatype.U1;
-import com.github.zxh.classpy.classfile.datatype.U2;
 import com.github.zxh.classpy.classfile.datatype.U1CpIndex;
 import com.github.zxh.classpy.classfile.datatype.U2CpIndex;
 
@@ -42,11 +41,7 @@ public class ClassReader extends BytesReader {
     public U1CpIndex readU1CpIndex() {
         return readCC(U1CpIndex::new);
     }
-    
-    public U2 readU2() {
-        return readCC(U2::new);
-    }
-    
+
     public U2CpIndex readU2CpIndex() {
         return readCC(U2CpIndex::new);
     }
